@@ -1,0 +1,25 @@
+.wrapper {
+    margin: 0px 10px;
+    padding: 5px 0;
+    font-size: 1.1rem;
+    &:hover {
+        background-color: var(--gray-white);
+    }
+}
+
+.info {
+    display: flex;
+    align-items: column;
+
+    .post-date {
+        color: var(--gray);
+        margin-left: 3px;
+    }
+    .author {
+        color: var(--green);
+    }
+}
+
+.content {
+    color: black;
+}
