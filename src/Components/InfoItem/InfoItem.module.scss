@@ -1,0 +1,8 @@
+.wrapper {
+    color: var(--gray-dark);
+    padding: 5px 0;
+
+    &:hover {
+        background-color: var(--gray-white);
+    }
+}

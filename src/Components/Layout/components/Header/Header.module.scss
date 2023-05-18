@@ -23,25 +23,6 @@
     align-items: center;
 }
 
-.header-menu {
-    height: 60px;
-    // padding-left: 5%;
-    display: flex;
-    align-items: center;
-}
-
-.menu-button {
-    font-size: 15px;
-    font-weight: 900;
-    line-height: 1.6;
-    padding-inline-start: 20px;
-    color: var(--gray);
-
-    &:hover {
-        color: var(--green);
-    }
-}
-
 .search,
 .search-result {
     width: 360px;
@@ -118,9 +99,9 @@
 .action {
     display: flex;
     align-items: center;
-    .info,
-    .noti,
-    .write {
+    & .info,
+    & .noti,
+    & .write {
         background-color: rgb(255, 255, 255);
         color: var(--gray);
         font-size: 1.5rem;
@@ -132,7 +113,7 @@
         }
     }
 
-    .login-register {
+    & .login-register {
         display: flex;
         align-items: center;
         width: fit-content;
@@ -146,7 +127,7 @@
         }
     }
 
-    .avatar {
+    & .avatar {
         width: 50px;
         height: 50px;
         border-radius: 100%;

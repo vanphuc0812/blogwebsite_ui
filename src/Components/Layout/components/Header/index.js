@@ -10,6 +10,8 @@ import styles from './Header.module.scss';
 import images from '../../../../asset/images';
 import { Wrapper as PopperWrapper } from '../../../Popper';
 import BlogItem from '../../../BlogItem';
+import Button from '../../../Button';
+import InfoItem from '../../../InfoItem';
 
 const cx = classNames.bind(styles);
 
@@ -29,9 +31,9 @@ function Header() {
                     <img height={40} width={50} src={images.logo} alt="PLog" />
                 </div>
                 <div className={cx('header-menu')}>
-                    <div className={cx('menu-button')}>Bài viết</div>
-                    <div className={cx('menu-button')}>Hỏi đáp</div>
-                    <div className={cx('menu-button')}>Thảo luận</div>
+                    <Button type="text">Bài viết</Button>
+                    <Button type="text">Hỏi đáp</Button>
+                    <Button type="text">Thảo luận</Button>
                 </div>
                 <div className={cx('search')}>
                     <Tippy
@@ -42,16 +44,20 @@ function Header() {
                                 <PopperWrapper>
                                     <h3 className={cx('search-label')}>Bài viết</h3>
                                     <BlogItem
-                                        title={'Bai viet so 1'}
+                                        title={'Java collections: sắp xếp collections'}
                                         author={'Huynh Van Phuc'}
-                                        postDate={20202102}
-                                        content={'asdjfasjdflajdlfjasldfjlasdkfjlasdjfladjflajdsfl'}
+                                        postDate={'thg 3 5, 2017 2:58 CH'}
+                                        content={
+                                            'Thực ra việc sắp xếp trong collection của java là một vấn đề rất cũ, nhưng thường trong các câu hỏi phỏng vấn về java ứng viên rất hay bị hỏi về vấn đề này. Vì vậy mình mong post này sẽ giúp được một số ứng viên chẳng may bị hỏi đến lúc phỏng vấn 😄. Lớp Collections cung cấp các phương thức tĩnh(static) cho việc sắp xếp các phần tử của collection. Chúng ta có thể sắp xếp các phần tử của:'
+                                        }
                                     />
                                     <BlogItem
-                                        title={'Bai viet so 2'}
+                                        title={'Làm thế nào để chạy shell script trong Java?'}
                                         author={'Huynh Van Phuc'}
-                                        postDate={20202102}
-                                        content={'asdjfasjdflajdlfjasldfjlasdkfjlasdjfladjflajdsfl'}
+                                        postDate={'thg 2 16, 2019 3:26 CH'}
+                                        content={
+                                            'Trong thực tế nhiều khi chương trình Java của bạn sẽ phải gọi đến shell script của hệ điều hành (Window, Linux) để thực hiện một số các tác vụ đặc biệt nào đó. Ví dụ như khi ứng dụng của bạn thực hiện một nghiệp vụ và sau đó phải gọi đến 1 shell script để import dữ liệu vào DB chẳng hạn.... Bài viết này sẽ giới thiệu cách thức để chúng ta có thể chạy shell script trong Java.'
+                                        }
                                     />
                                     <h3 className={cx('search-label')}>Hỏi đáp</h3>
                                 </PopperWrapper>
@@ -78,25 +84,36 @@ function Header() {
                                         <h3>Thông tin</h3>
                                         <button className={cx('mark-seen-btn')}>Đánh dấu là đã đọc</button>
                                     </div>
-                                    <div className={cx('list-info')}></div>
+                                    <div className={cx('list-info')}>
+                                        <InfoItem
+                                            title={'🔔 Sự kiện May Fest 2023 chính thức diễn ra từ hôm nay! 🔔'}
+                                            time={'thg 4 1, 12:00 SA'}
+                                        ></InfoItem>
+                                        <InfoItem></InfoItem>
+                                    </div>
                                 </PopperWrapper>
                             </div>
                         )}
                     >
-                        <button className={cx('info')}>
-                            <FontAwesomeIcon icon={faInfo} />
-                        </button>
+                        <span>
+                            <Button type="text" size="icon">
+                                <FontAwesomeIcon icon={faInfo} />
+                            </Button>
+                        </span>
                     </Tippy>
-                    <button className={cx('noti')}>
-                        <FontAwesomeIcon icon={faBell} />
-                    </button>
-                    <button className={cx('write')}>
-                        <FontAwesomeIcon icon={faPenToSquare} />
-                    </button>
-                    <div className={cx('login-register')}>
-                        <FontAwesomeIcon icon={faRightToBracket} />
-                        <p>Đăng nhập/Đăng ký</p>
-                    </div>
+                    <span>
+                        <Button type="text" size="icon">
+                            <FontAwesomeIcon icon={faBell} />
+                        </Button>
+                    </span>
+                    <span>
+                        <Button type="text" size="icon">
+                            <FontAwesomeIcon icon={faPenToSquare} />
+                        </Button>
+                    </span>
+                    <Button type="text" leftIcon={<FontAwesomeIcon icon={faRightToBracket} />}>
+                        Đăng nhập/Đăng ký
+                    </Button>
                     <div className={cx('avatar')}>
                         <img
                             src="https://w0.peakpx.com/wallpaper/549/987/HD-wallpaper-ssj3-goku-ball-dragon-super.jpg"
