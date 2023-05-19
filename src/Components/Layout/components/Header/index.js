@@ -26,6 +26,7 @@ const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faUser} />,
         title: 'Profile',
+        to: '/user',
     },
     {
         icon: <FontAwesomeIcon icon={faFileLines} />,

@@ -6,7 +6,7 @@
     min-width: 100px;
     font-weight: 500;
     border-radius: 4px;
-    padding: 9px 16px;
+    padding: 9px 4px;
     background-color: white;
     border: 1px solid transparent;
     cursor: pointer;
@@ -57,14 +57,15 @@
 //Button size
 .small {
     min-width: 88px;
-    padding: 4px 16px;
+    padding: 4px 16px; // height: 35px;
 }
 .large {
     min-width: 140px;
     padding: 14px 16px;
 }
 .icon {
-    min-width: 40px;
-    min-height: 40;
+    width: 35px;
+    min-width: 30px;
+    min-height: 20px;
     padding: 4px 16px;
 }

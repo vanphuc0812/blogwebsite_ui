@@ -113,20 +113,6 @@
         }
     }
 
-    & .login-register {
-        display: flex;
-        align-items: center;
-        width: fit-content;
-        height: 100%;
-        font-size: 1.5rem;
-        color: var(--gray);
-        padding: 20px;
-
-        &:hover {
-            color: var(--green);
-        }
-    }
-
     & .avatar {
         width: 50px;
         height: 50px;
@@ -135,6 +121,7 @@
         align-items: center;
         overflow: hidden;
         border: 1.5px solid transparent;
+        margin-left: 10px;
         & img {
             height: 100%;
             width: 100%;
