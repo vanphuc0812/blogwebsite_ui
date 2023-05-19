@@ -1,7 +1,14 @@
 import { useEffect, useState } from 'react';
 import Tippy from '@tippyjs/react/headless';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass, faSpinner, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
+import {
+    faMagnifyingGlass,
+    faSpinner,
+    faRightToBracket,
+    faUser,
+    faFileLines,
+    faTimes,
+} from '@fortawesome/free-solid-svg-icons';
 import { faInfo } from '@fortawesome/free-solid-svg-icons';
 
 import { faCircleXmark, faBell, faPenToSquare } from '@fortawesome/free-regular-svg-icons';
@@ -12,15 +19,30 @@ import { Wrapper as PopperWrapper } from '../../../Popper';
 import BlogItem from '../../../BlogItem';
 import Button from '../../../Button';
 import InfoItem from '../../../InfoItem';
+import Menu from '../../../Popper/Menu';
 
 const cx = classNames.bind(styles);
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faUser} />,
+        title: 'Profile',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faFileLines} />,
+        title: 'My content',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faTimes} />,
+        title: 'My',
+    },
+];
 
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
 
     useEffect(() => {
         setTimeout(() => {
-            setSearchResult([1, 2, 3]);
+            setSearchResult([]);
         }, 100);
     }, []);
 
@@ -78,21 +100,25 @@ function Header() {
                     <Tippy
                         interactive
                         render={(attr) => (
-                            <div className={cx('info-result')}>
-                                <PopperWrapper>
-                                    <div className={cx('info-header')}>
-                                        <h3>Thông tin</h3>
-                                        <button className={cx('mark-seen-btn')}>Đánh dấu là đã đọc</button>
-                                    </div>
-                                    <div className={cx('list-info')}>
-                                        <InfoItem
-                                            title={'🔔 Sự kiện May Fest 2023 chính thức diễn ra từ hôm nay! 🔔'}
-                                            time={'thg 4 1, 12:00 SA'}
-                                        ></InfoItem>
-                                        <InfoItem></InfoItem>
-                                    </div>
-                                </PopperWrapper>
-                            </div>
+                            <PopperWrapper>
+                                <div className={cx('info-header')}>
+                                    <h3>Thông tin</h3>
+                                    <button className={cx('mark-seen-btn')}>Đánh dấu là đã đọc</button>
+                                </div>
+                                <div className={cx('list-info')}>
+                                    <InfoItem
+                                        title={'🔔 Sự kiện May Fest 2023 chính thức diễn ra từ hôm nay! 🔔'}
+                                        time={'thg 4 1, 12:00 SA'}
+                                    ></InfoItem>
+                                    <InfoItem
+                                        title={'Công bố thể lệ chính thức Viblo May Fest 2023 🏆️✨'}
+                                        time={'thg 4 1, 12:00 SA'}
+                                    ></InfoItem>
+                                </div>
+                                <div className={cx('info-footer')}>
+                                    <button className={cx('all-info-btn')}>Tất cả thông tin</button>
+                                </div>
+                            </PopperWrapper>
                         )}
                     >
                         <span>
@@ -114,12 +140,15 @@ function Header() {
                     <Button type="text" leftIcon={<FontAwesomeIcon icon={faRightToBracket} />}>
                         Đăng nhập/Đăng ký
                     </Button>
-                    <div className={cx('avatar')}>
-                        <img
-                            src="https://w0.peakpx.com/wallpaper/549/987/HD-wallpaper-ssj3-goku-ball-dragon-super.jpg"
-                            alt="avatar"
-                        ></img>
-                    </div>
+
+                    <Menu items={MENU_ITEMS}>
+                        <div className={cx('avatar')}>
+                            <img
+                                src="https://w0.peakpx.com/wallpaper/549/987/HD-wallpaper-ssj3-goku-ball-dragon-super.jpg"
+                                alt="avatar"
+                            ></img>
+                        </div>
+                    </Menu>
                 </div>
             </div>
         </header>

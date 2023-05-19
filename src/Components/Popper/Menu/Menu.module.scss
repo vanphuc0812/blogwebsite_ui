@@ -1,0 +1,21 @@
+.content {
+    --general-width: 160px;
+    width: var(--general-width);
+
+    .menu-item {
+        background-color: white;
+        display: flex;
+        align-items: left;
+        justify-content: left;
+        padding: 4px 4px;
+        font-size: 1.4rem;
+        width: var(--general-width);
+        font-weight: 500;
+        color: var(--gray);
+
+        cursor: pointer;
+        &:hover {
+            background-color: var(--green-hover);
+        }
+    }
+}

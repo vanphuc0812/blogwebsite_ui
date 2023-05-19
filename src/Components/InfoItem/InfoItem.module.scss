@@ -1,8 +1,8 @@
 .wrapper {
-    color: var(--gray-dark);
+    color: var(--gray-dark-light);
     padding: 5px 0;
 
     &:hover {
-        background-color: var(--gray-white);
+        background-color: var(--green-hover);
     }
 }
