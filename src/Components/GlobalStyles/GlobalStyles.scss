@@ -1,5 +1,5 @@
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,700&display=swap');
 
 :root {
     --primary: #fe2c55;
@@ -19,6 +19,7 @@
     --teal: #8eb4cb;
     --cyan: #17a2b8;
     --white: #fff;
+    font-weight: 200;
     --gray: #9b9b9b;
     --gray-white: #ececec;
     --gray-white-dark: rgb(219, 216, 216);
@@ -35,7 +36,7 @@
 
     //default layout
     --default-layout-header-height: 60px;
-    --default-layout-width: 1150px;
+    --default-layout-width: 80%;
 }
 
 * {
@@ -60,6 +61,7 @@ input,
 [tabinex] {
     outline: none;
     border: none;
+    font-family: 'Roboto', sans-serif;
 }
 
 a[href] {

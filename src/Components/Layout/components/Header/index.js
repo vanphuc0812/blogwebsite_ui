@@ -26,11 +26,24 @@ const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faUser} />,
         title: 'Profile',
-        to: '/user',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    title: 'English',
+                    code: 'en',
+                },
+                {
+                    title: 'Vietnamese',
+                    code: 'vi',
+                },
+            ],
+        },
     },
     {
         icon: <FontAwesomeIcon icon={faFileLines} />,
         title: 'My content',
+        to: '/user',
     },
     {
         icon: <FontAwesomeIcon icon={faTimes} />,
@@ -47,18 +60,29 @@ function Header() {
         }, 100);
     }, []);
 
+    // Handle logic
+    const handleMenuChange = (menuItem) => {
+        console.log(menuItem);
+    };
+
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('logo')}>
-                    <img height={40} width={50} src={images.logo} alt="PLog" />
-                </div>
                 <div className={cx('header-menu')}>
-                    <Button type="text">Bài viết</Button>
-                    <Button type="text">Hỏi đáp</Button>
-                    <Button type="text">Thảo luận</Button>
+                    <img className={cx('logo')} src={images.logo} alt="PLog" />
+                    <div className={cx('large')}>
+                        <Button size="small" type="text">
+                            Bài viết
+                        </Button>
+                        <Button size="small" type="text">
+                            Hỏi đáp
+                        </Button>
+                        <Button size="small" type="text">
+                            Thảo luận
+                        </Button>
+                    </div>
                 </div>
-                <div className={cx('search')}>
+                <div className={cx('search', 'medium')}>
                     <Tippy
                         interactive
                         visible={searchResult.length > 0}
@@ -142,13 +166,14 @@ function Header() {
                         Đăng nhập/Đăng ký
                     </Button>
 
-                    <Menu items={MENU_ITEMS}>
-                        <div className={cx('avatar')}>
-                            <img
-                                src="https://w0.peakpx.com/wallpaper/549/987/HD-wallpaper-ssj3-goku-ball-dragon-super.jpg"
-                                alt="avatar"
-                            ></img>
-                        </div>
+                    <Menu items={MENU_ITEMS} onchange={handleMenuChange}>
+                        {/* <div > */}
+                        <img
+                            className={cx('avatar')}
+                            src="https://w0.peakpx.com/wallpaper/549/987/HD-wallpaper-ssj3-goku-ball-dragon-super.jpg"
+                            alt="avatar"
+                        ></img>
+                        {/* </div> */}
                     </Menu>
                 </div>
             </div>
