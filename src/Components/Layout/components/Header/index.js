@@ -22,6 +22,7 @@ import InfoItem from '../../../InfoItem';
 import Menu from '../../../Popper/Menu';
 
 import { LOGGED_MENU_ITEMS, UNLOGGED_MENU_ITEMS } from './Utils';
+import Image from '../../../Image';
 
 const cx = classNames.bind(styles);
 
@@ -172,11 +173,11 @@ function Header() {
                                 </span>
                             </Tippy>
                             <Menu items={LOGGED_MENU_ITEMS} onchange={handleMenuChange}>
-                                <img
+                                <Image
                                     className={cx('avatar')}
                                     src="https://w0.peakpx.com/wallpaper/549/987/HD-wallpaper-ssj3-goku-ball-dragon-super.jpg"
                                     alt="avatar"
-                                ></img>
+                                ></Image>
                             </Menu>
                         </div>
                     )}
