@@ -1,5 +1,5 @@
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&family=Wix+Madefor+Text:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap');
 
 :root {
     --primary: #fe2c55;
@@ -23,7 +23,7 @@
     --gray: #9b9b9b;
     --gray-white: #ececec;
     --gray-white-dark: rgb(219, 216, 216);
-    --gray-dark: #3a3f44;
+    --gray-dark: #494e53;
     --gray-dark-light: #606266;
     --primary: #5488c7;
     --secondary: #9b9b9b;
@@ -36,7 +36,7 @@
 
     //default layout
     --default-layout-header-height: 60px;
-    --default-layout-width: 80%;
+    --default-layout-width: 1140px;
 }
 
 * {
@@ -61,7 +61,6 @@ input,
 [tabinex] {
     outline: none;
     border: none;
-    font-family: 'Roboto', sans-serif;
 }
 
 a[href] {
@@ -73,4 +72,16 @@ ul {
     list-style: none;
     padding: 0;
     margin: 0;
+}
+
+//custom tippy
+body {
+    .tippy-box {
+        background-color: var(--green);
+        color: var(--white);
+    }
+    .tippy-arrow {
+        // background-color: var(--green-hover);
+        color: var(--green);
+    }
 }

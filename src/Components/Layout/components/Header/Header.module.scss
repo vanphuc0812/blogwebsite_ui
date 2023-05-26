@@ -22,9 +22,9 @@
 }
 .logo {
     object-fit: cover;
-    height: 50px;
-    width: 50px;
-    margin-right: 12px;
+    height: 40px;
+    width: 40px;
+    margin: 0 32px 0 12px;
 }
 
 .search,
@@ -45,6 +45,7 @@
     input {
         flex: 1;
         color: var(--gray-dark);
+        width: 300px;
         height: 100%;
         font-size: 1.4rem;
         background-color: transparent;
@@ -67,11 +68,13 @@
 }
 
 .loading,
-.clear {
+.clear-btn {
     position: absolute;
-    right: 53px;
+    right: 40px;
     top: 50%;
     transform: translateY(-50%);
+    padding: 12px;
+    background-color: transparent;
     color: var(--gray);
     &:hover {
         color: var(--green);
@@ -93,7 +96,7 @@
 }
 
 .search-label {
-    color: rgb(219, 216, 216);
+    color: rgb(255, 255, 255);
     background-color: var(--green);
     margin: 0px 10px;
     padding: 3px;
@@ -105,7 +108,7 @@
     & .info,
     & .noti,
     & .write {
-        background-color: rgb(255, 255, 255);
+        background-color: transparent;
         color: var(--gray);
         font-size: 1.5rem;
         width: 40px;
@@ -117,14 +120,14 @@
     }
 
     & .avatar {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         border-radius: 100%;
         display: flex;
         align-items: center;
         overflow: hidden;
         border: 1.5px solid transparent;
-        margin-left: 10px;
+        margin: 0 10px;
         object-fit: cover;
 
         &:hover {
@@ -156,13 +159,45 @@
         }
     }
 }
-@media screen and (max-width: 1310px) {
-    .large {
+.info-btn {
+    padding-left: 10px;
+}
+.unlogin-menu-btn {
+    margin-left: 12px;
+}
+
+@media screen and (min-width: 1000px) {
+    .action .un-large {
         display: none;
     }
 }
-@media screen and (max-width: 980px) {
+
+@media screen and (max-width: 1000px) {
+    .action .large {
+        display: none;
+    }
+    .inner {
+        width: 900px;
+    }
+}
+@media screen and (max-width: 890px) {
     .medium {
+        display: none;
+    }
+    .inner {
+        width: 600px;
+    }
+}
+@media screen and (max-width: 610px) {
+    .small {
+        display: none;
+    }
+    .inner {
+        width: 400px;
+    }
+}
+@media screen and (min-width: 610px) {
+    .un-small {
         display: none;
     }
 }

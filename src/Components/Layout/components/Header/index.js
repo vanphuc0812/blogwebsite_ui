@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
-import Tippy from '@tippyjs/react/headless';
+import HeadlessTippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css'; // optional
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+    faInfo,
     faMagnifyingGlass,
     faSpinner,
     faRightToBracket,
-    faUser,
-    faFileLines,
-    faTimes,
+    faEllipsisVertical,
 } from '@fortawesome/free-solid-svg-icons';
-import { faInfo } from '@fortawesome/free-solid-svg-icons';
-
 import { faCircleXmark, faBell, faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
@@ -21,37 +21,14 @@ import Button from '../../../Button';
 import InfoItem from '../../../InfoItem';
 import Menu from '../../../Popper/Menu';
 
+import { LOGGED_MENU_ITEMS, UNLOGGED_MENU_ITEMS } from './Utils';
+
 const cx = classNames.bind(styles);
-const MENU_ITEMS = [
-    {
-        icon: <FontAwesomeIcon icon={faUser} />,
-        title: 'Profile',
-        children: {
-            title: 'Language',
-            data: [
-                {
-                    title: 'English',
-                    code: 'en',
-                },
-                {
-                    title: 'Vietnamese',
-                    code: 'vi',
-                },
-            ],
-        },
-    },
-    {
-        icon: <FontAwesomeIcon icon={faFileLines} />,
-        title: 'My content',
-        to: '/user',
-    },
-    {
-        icon: <FontAwesomeIcon icon={faTimes} />,
-        title: 'My',
-    },
-];
 
 function Header() {
+    //test
+    const [currentUser, setCurrentUser] = useState(false);
+
     const [searchResult, setSearchResult] = useState([]);
 
     useEffect(() => {
@@ -61,8 +38,21 @@ function Header() {
     }, []);
 
     // Handle logic
+    const handleSignin = () => {
+        setCurrentUser(true);
+        console.log(currentUser);
+    };
+    const handleSignOut = () => {
+        setCurrentUser(false);
+    };
     const handleMenuChange = (menuItem) => {
-        console.log(menuItem);
+        switch (menuItem.title) {
+            case 'Sign out':
+                setCurrentUser(false);
+
+                break;
+        }
+        console.log(currentUser);
     };
 
     return (
@@ -70,7 +60,7 @@ function Header() {
             <div className={cx('inner')}>
                 <div className={cx('header-menu')}>
                     <img className={cx('logo')} src={images.logo} alt="PLog" />
-                    <div className={cx('large')}>
+                    <div className={cx('medium')}>
                         <Button size="small" type="text">
                             Bài viết
                         </Button>
@@ -82,8 +72,8 @@ function Header() {
                         </Button>
                     </div>
                 </div>
-                <div className={cx('search', 'medium')}>
-                    <Tippy
+                <div className={cx('search', 'small')}>
+                    <HeadlessTippy
                         interactive
                         visible={searchResult.length > 0}
                         render={(attr) => (
@@ -111,9 +101,11 @@ function Header() {
                             </div>
                         )}
                     >
-                        <input placeholder="Tìm kiếm" spellCheck={false} />
-                    </Tippy>
-                    <button className={cx('clear')}>
+                        <span>
+                            <input placeholder="Tìm kiếm" spellCheck={false} />
+                        </span>
+                    </HeadlessTippy>
+                    <button className={cx('clear-btn')}>
                         <FontAwesomeIcon icon={faCircleXmark} />
                     </button>
                     {/* <FontAwesomeIcon className={cx('loading')} icon={faSpinner} spin /> */}
@@ -121,8 +113,12 @@ function Header() {
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </button>
                 </div>
+
                 <div className={cx('action')}>
-                    <Tippy
+                    <Button size="icon-btn" type="text" className={cx('un-small')}>
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    </Button>
+                    <HeadlessTippy
                         interactive
                         render={(attr) => (
                             <PopperWrapper>
@@ -147,34 +143,73 @@ function Header() {
                         )}
                     >
                         <span>
-                            <Button type="text" size="icon">
-                                <FontAwesomeIcon icon={faInfo} />
-                            </Button>
+                            <Button
+                                className={cx('info-btn')}
+                                type="text"
+                                size="icon-btn"
+                                leftIcon={<FontAwesomeIcon icon={faInfo} />}
+                            ></Button>
                         </span>
-                    </Tippy>
-                    <span>
-                        <Button type="text" size="icon">
-                            <FontAwesomeIcon icon={faBell} />
-                        </Button>
-                    </span>
-                    <span>
-                        <Button type="text" size="icon">
-                            <FontAwesomeIcon icon={faPenToSquare} />
-                        </Button>
-                    </span>
-                    <Button type="text" leftIcon={<FontAwesomeIcon icon={faRightToBracket} />}>
-                        Đăng nhập/Đăng ký
-                    </Button>
-
-                    <Menu items={MENU_ITEMS} onchange={handleMenuChange}>
-                        {/* <div > */}
-                        <img
-                            className={cx('avatar')}
-                            src="https://w0.peakpx.com/wallpaper/549/987/HD-wallpaper-ssj3-goku-ball-dragon-super.jpg"
-                            alt="avatar"
-                        ></img>
-                        {/* </div> */}
-                    </Menu>
+                    </HeadlessTippy>
+                    {currentUser && (
+                        <div className={cx('action')}>
+                            <Tippy content="Notification" placement="bottom">
+                                <span>
+                                    <Button
+                                        type="text"
+                                        size="icon-btn"
+                                        leftIcon={<FontAwesomeIcon icon={faBell} />}
+                                    ></Button>
+                                </span>
+                            </Tippy>
+                            <Tippy content="Writes" placement="bottom">
+                                <span>
+                                    <Button
+                                        type="text"
+                                        size="icon-btn"
+                                        leftIcon={<FontAwesomeIcon icon={faPenToSquare} />}
+                                    ></Button>
+                                </span>
+                            </Tippy>
+                            <Menu items={LOGGED_MENU_ITEMS} onchange={handleMenuChange}>
+                                <img
+                                    className={cx('avatar')}
+                                    src="https://w0.peakpx.com/wallpaper/549/987/HD-wallpaper-ssj3-goku-ball-dragon-super.jpg"
+                                    alt="avatar"
+                                ></img>
+                            </Menu>
+                        </div>
+                    )}
+                    {!currentUser && (
+                        <div className={cx('action')}>
+                            <div>
+                                <Button
+                                    className={cx('large')}
+                                    leftIcon={<FontAwesomeIcon icon={faRightToBracket} />}
+                                    onClick={handleSignin}
+                                >
+                                    Đăng nhập/Đăng ký
+                                </Button>
+                                <Button
+                                    className={cx('un-large')}
+                                    size="icon-btn"
+                                    type="text"
+                                    leftIcon={<FontAwesomeIcon icon={faRightToBracket} />}
+                                    onClick={handleSignin}
+                                ></Button>
+                            </div>
+                            <Menu items={UNLOGGED_MENU_ITEMS}>
+                                <span>
+                                    <Button
+                                        className={cx('unlogin-menu-btn')}
+                                        type="text"
+                                        size="icon-btn"
+                                        leftIcon={<FontAwesomeIcon icon={faEllipsisVertical} />}
+                                    ></Button>
+                                </span>
+                            </Menu>
+                        </div>
+                    )}
                 </div>
             </div>
         </header>
