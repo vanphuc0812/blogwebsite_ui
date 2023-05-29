@@ -2,12 +2,14 @@ import styles from './Footer.module.scss';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 const cx = classNames.bind(styles);
 
 function Footer() {
     return (
-        <div className={cx('footer')}>
+        <footer className={cx('footer')}>
             <div className={cx('wrapper')}>
                 <div className={cx('inner')}>
                     <div className={cx('about')}>
@@ -60,15 +62,25 @@ function Footer() {
                             </div>
                         </div>
                     </div>
-                    <div className={cx('social')}>
-                        <h2>GIỮ KẾT NỐI</h2>
-                        <FontAwesomeIcon className={cx('social-icon')} icon={faFacebook} />
-                        <FontAwesomeIcon className={cx('social-icon')} icon={faTwitter} />
-                        <FontAwesomeIcon className={cx('social-icon')} icon={faInstagram} />
-                        <FontAwesomeIcon className={cx('social-icon')} icon={faWhatsapp} />
-                    </div>
                     <div className={cx('contact')}>
-                        <h2>THÔNG TIN LIÊN LẠC</h2>
+                        <div className={cx('social')}>
+                            <h2>GIỮ KẾT NỐI</h2>
+                            <Tippy content="Facebook" placement="bottom">
+                                <FontAwesomeIcon className={cx('social-icon')} icon={faFacebook} />
+                            </Tippy>
+                            <Tippy content="Twitter" placement="bottom">
+                                <FontAwesomeIcon className={cx('social-icon')} icon={faTwitter} />
+                            </Tippy>
+                            <Tippy content="Instagram" placement="bottom">
+                                <FontAwesomeIcon className={cx('social-icon')} icon={faInstagram} />
+                            </Tippy>
+                            <Tippy content="Whatsapp" placement="bottom">
+                                <FontAwesomeIcon className={cx('social-icon')} icon={faWhatsapp} />
+                            </Tippy>
+                        </div>
+                        <div className={cx('contact-info')}>
+                            <h2>THÔNG TIN LIÊN LẠC</h2>
+                        </div>
                     </div>
                 </div>
                 <hr></hr>
@@ -100,7 +112,7 @@ function Footer() {
                     </div>
                 </div>
             </div>
-        </div>
+        </footer>
     );
 }
 
