@@ -1,10 +1,12 @@
 import HeadlessTippy from '@tippyjs/react/headless';
 import { useEffect, useState, useRef } from 'react';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { faCircleXmark } from '@fortawesome/free-regular-svg-icons';
 import classNames from 'classnames/bind';
+
+import { useDebounce } from '../../../../hooks';
+import * as searchService from '../../../../apiService/searchService';
 import styles from './Search.module.scss';
 import { Wrapper as PopperWrapper } from '../../../Popper';
 import BlogItem from '../../../BlogItem';
@@ -17,26 +19,26 @@ function Search() {
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
 
+    const debounced = useDebounce(searchInputValue, 800);
+
     const inputRef = useRef();
 
     useEffect(() => {
-        if (!searchInputValue.trim()) {
+        if (!debounced.trim()) {
             setSearchResult([]);
             return;
         }
         setLoading(true);
-        fetch(
-            `http://localhost:8080/BlogsManagement/SearchBlogs?keyword=${encodeURIComponent(
-                searchInputValue,
-            )}&type=less`,
-        )
-            .then((res) => res.json())
-            .then((res) => {
-                setSearchResult(res.content);
-                setLoading(false);
-            })
-            .catch(() => setLoading(false));
-    }, [searchInputValue]);
+
+        const fetchAPI = async () => {
+            setLoading(true);
+            const res = await searchService.search(debounced);
+            setSearchResult(res);
+            setLoading(false);
+        };
+
+        fetchAPI();
+    }, [debounced]);
 
     const handleClear = () => {
         setSearchInputValue('');

@@ -21,8 +21,10 @@
     .post-date {
         color: var(--gray);
         margin-left: 3px;
+        flex: 1;
     }
     .author {
+        width: 120px;
         color: var(--green);
     }
 }
