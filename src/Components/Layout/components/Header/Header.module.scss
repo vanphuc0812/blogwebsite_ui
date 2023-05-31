@@ -1,9 +1,14 @@
 .wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+
     height: var(--default-layout-header-height);
     width: 100%;
     display: flex;
     justify-content: center;
-
+    background-color: var(--white);
     --search-border-radius: 92px;
     --search-height: 40px;
     --search-top-spacer: 9px;

@@ -55,46 +55,47 @@ function Search() {
 
     return (
         <div className={cx('search', 'small')}>
-            <HeadlessTippy
-                interactive
-                onClickOutside={handleHideResult}
-                visible={
-                    showResult && searchBlogResult.length > 0 // ||
-                }
-                render={(attr) => (
-                    <div className={cx('search-result')}>
-                        <PopperWrapper>
-                            {searchBlogResult.length > 0 && (
-                                <div className={cx('blogpost-search-result')}>
-                                    <h3 className={cx('search-label')}>Bài viết</h3>
-                                    {searchBlogResult.map((searchItem) => (
-                                        <BlogItem key={searchItem.id} data={searchItem} />
-                                    ))}
-                                </div>
-                            )}
+            {/* Interactive tippy element may not be accessible via keyboard navigation because it is not directly after the reference element in the DOM source order. Using a wrapper <div> or <span> tag around the reference element solves this by creating a new parentNode context.  */}
+            <div>
+                <HeadlessTippy
+                    interactive
+                    onClickOutside={handleHideResult}
+                    visible={
+                        showResult && searchBlogResult.length > 0 // ||
+                    }
+                    render={(attr) => (
+                        <div className={cx('search-result')}>
+                            <PopperWrapper>
+                                {searchBlogResult.length > 0 && (
+                                    <div className={cx('blogpost-search-result')}>
+                                        <h3 className={cx('search-label')}>Bài viết</h3>
+                                        {searchBlogResult.map((searchItem) => (
+                                            <BlogItem key={searchItem.id} data={searchItem} />
+                                        ))}
+                                    </div>
+                                )}
 
-                            {searchAuthorResult.length > 0 && (
-                                <div className={cx('author-search-result')}>
-                                    <h3 className={cx('search-label')}>Tác giả</h3>
-                                    {searchAuthorResult.map((searchItem) => (
-                                        <BlogItem key={searchItem.id} data={searchItem} />
-                                    ))}
-                                </div>
-                            )}
+                                {searchAuthorResult.length > 0 && (
+                                    <div className={cx('author-search-result')}>
+                                        <h3 className={cx('search-label')}>Tác giả</h3>
+                                        {searchAuthorResult.map((searchItem) => (
+                                            <BlogItem key={searchItem.id} data={searchItem} />
+                                        ))}
+                                    </div>
+                                )}
 
-                            {searchQuestionResult.length > 0 && (
-                                <div className={cx('question-search-result')}>
-                                    <h3 className={cx('search-label')}>Hỏi đáp</h3>
-                                    {searchQuestionResult.map((searchItem) => (
-                                        <BlogItem key={searchItem.id} data={searchItem} />
-                                    ))}
-                                </div>
-                            )}
-                        </PopperWrapper>
-                    </div>
-                )}
-            >
-                <span>
+                                {searchQuestionResult.length > 0 && (
+                                    <div className={cx('question-search-result')}>
+                                        <h3 className={cx('search-label')}>Hỏi đáp</h3>
+                                        {searchQuestionResult.map((searchItem) => (
+                                            <BlogItem key={searchItem.id} data={searchItem} />
+                                        ))}
+                                    </div>
+                                )}
+                            </PopperWrapper>
+                        </div>
+                    )}
+                >
                     <input
                         ref={inputRef}
                         value={searchInputValue}
@@ -105,8 +106,8 @@ function Search() {
                         }}
                         onFocus={() => setShowResult(true)}
                     />
-                </span>
-            </HeadlessTippy>
+                </HeadlessTippy>
+            </div>
             {!!searchInputValue && !loading && (
                 <Button
                     type="text"
