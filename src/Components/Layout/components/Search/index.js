@@ -15,14 +15,28 @@ function Search() {
     const [searchResult, setSearchResult] = useState([]);
     const [searchInputValue, setSearchInputValue] = useState('');
     const [showResult, setShowResult] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const inputRef = useRef();
 
     useEffect(() => {
-        fetch('https://tiktok.fullstack.edu.vn/api/users/search?q=hoaa&type=less')
+        if (!searchInputValue.trim()) {
+            setSearchResult([]);
+            return;
+        }
+        setLoading(true);
+        fetch(
+            `http://localhost:8080/BlogsManagement/SearchBlogs?keyword=${encodeURIComponent(
+                searchInputValue,
+            )}&type=less`,
+        )
             .then((res) => res.json())
-            .then((res) => setSearchResult(res.data));
-    }, []);
+            .then((res) => {
+                setSearchResult(res.content);
+                setLoading(false);
+            })
+            .catch(() => setLoading(false));
+    }, [searchInputValue]);
 
     const handleClear = () => {
         setSearchInputValue('');
@@ -44,22 +58,9 @@ function Search() {
                     <div className={cx('search-result')}>
                         <PopperWrapper>
                             <h3 className={cx('search-label')}>Bài viết</h3>
-                            <BlogItem
-                                title={'Java collections: sắp xếp collections'}
-                                author={'Huynh Van Phuc'}
-                                postDate={'thg 3 5, 2017 2:58 CH'}
-                                content={
-                                    'Thực ra việc sắp xếp trong collection của java là một vấn đề rất cũ, nhưng thường trong các câu hỏi phỏng vấn về java ứng viên rất hay bị hỏi về vấn đề này. Vì vậy mình mong post này sẽ giúp được một số ứng viên chẳng may bị hỏi đến lúc phỏng vấn 😄. Lớp Collections cung cấp các phương thức tĩnh(static) cho việc sắp xếp các phần tử của collection. Chúng ta có thể sắp xếp các phần tử của:'
-                                }
-                            />
-                            <BlogItem
-                                title={'Làm thế nào để chạy shell script trong Java?'}
-                                author={'Huynh Van Phuc'}
-                                postDate={'thg 2 16, 2019 3:26 CH'}
-                                content={
-                                    'Trong thực tế nhiều khi chương trình Java của bạn sẽ phải gọi đến shell script của hệ điều hành (Window, Linux) để thực hiện một số các tác vụ đặc biệt nào đó. Ví dụ như khi ứng dụng của bạn thực hiện một nghiệp vụ và sau đó phải gọi đến 1 shell script để import dữ liệu vào DB chẳng hạn.... Bài viết này sẽ giới thiệu cách thức để chúng ta có thể chạy shell script trong Java.'
-                                }
-                            />
+                            {searchResult.map((searchItem) => (
+                                <BlogItem key={searchItem.id} data={searchItem} />
+                            ))}
                             <h3 className={cx('search-label')}>Hỏi đáp</h3>
                         </PopperWrapper>
                     </div>
@@ -78,18 +79,23 @@ function Search() {
                     />
                 </span>
             </HeadlessTippy>
-
-            {!!searchInputValue && (
+            {!!searchInputValue && !loading && (
                 <Button
                     type="text"
                     size="icon-btn"
                     leftIcon={<FontAwesomeIcon icon={faCircleXmark} />}
                     className={cx('clear-btn')}
                     onClick={handleClear}
-                ></Button>
+                />
             )}
-
-            {/* <FontAwesomeIcon className={cx('loading')} icon={faSpinner} spin /> */}
+            {loading && (
+                <Button
+                    className={cx('loading')}
+                    type="text"
+                    size="icon-btn"
+                    leftIcon={<FontAwesomeIcon icon={faSpinner} spin />}
+                />
+            )}
             <button className={cx('search-btn')}>
                 <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>

@@ -6,7 +6,7 @@ import Search from '../Components/pages/Search';
 
 const publicRoutes = [
     { path: '/', component: Home },
-    { path: '/view', component: BlogView },
+    { path: '/blog/:transliterated', component: BlogView },
     { path: '/upload', component: Upload, layout: HeaderOnly },
     { path: '/search', component: Search, layout: null },
 ];
