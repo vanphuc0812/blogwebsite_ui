@@ -1,14 +1,14 @@
 import Home from '../Components/pages/Home';
 import BlogView from '../Components/pages/BlogView';
 import Upload from '../Components/pages/Upload';
-import { HeaderOnly } from '../Components/Layout';
+import { HeaderOnly } from '../layouts';
 import Search from '../Components/pages/Search';
-import routesConfig from '../config/routes';
+import config from '../config';
 const publicRoutes = [
-    { path: routesConfig.home, component: Home },
-    { path: routesConfig.blog, component: BlogView },
-    { path: routesConfig.write, component: Upload, layout: HeaderOnly },
-    { path: routesConfig.search, component: Search, layout: null },
+    { path: config.routes.home, component: Home },
+    { path: config.routes.blog, component: BlogView },
+    { path: config.routes.write, component: Upload, layout: HeaderOnly },
+    { path: config.routes.search, component: Search, layout: null },
 ];
 // require login
 const privateRoutes = [];

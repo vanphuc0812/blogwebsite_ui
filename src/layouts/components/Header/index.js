@@ -8,16 +8,17 @@ import { faInfo, faMagnifyingGlass, faRightToBracket, faEllipsisVertical } from 
 import { faCircleXmark, faBell, faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
-import images from '../../../../asset/images';
-import { Wrapper as PopperWrapper } from '../../../Popper';
-import Button from '../../../Button';
-import InfoItem from '../../../InfoItem';
-import Menu from '../../../Popper/Menu';
+import images from '../../../asset/images';
+import { Wrapper as PopperWrapper } from '../../../Components/Popper';
+import Button from '../../../Components/Button';
+import InfoItem from '../../../Components/InfoItem';
+import Menu from '../../../Components/Popper/Menu';
 
 import { LOGGED_MENU_ITEMS, UNLOGGED_MENU_ITEMS } from './Utils';
-import Image from '../../../Image';
+import Image from '../../../Components/Image';
 import Search from '../Search';
 import { Link } from 'react-router-dom';
+import config from '../../../config';
 
 const cx = classNames.bind(styles);
 
@@ -28,7 +29,6 @@ function Header() {
     // Handle logic
     const handleSignin = () => {
         setCurrentUser(true);
-        console.log(currentUser);
     };
     const handleSignOut = () => {
         setCurrentUser(false);
@@ -40,14 +40,13 @@ function Header() {
 
                 break;
         }
-        console.log(currentUser);
     };
 
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('header-menu')}>
-                    <Link to="/">
+                    <Link to={config.routes.home}>
                         <img className={cx('logo')} src={images.logo} alt="PLog" />
                     </Link>
                     <div className={cx('medium')}>
@@ -72,34 +71,40 @@ function Header() {
                         type="text"
                         className={cx('un-small')}
                     ></Button>
-                    <HeadlessTippy
-                        interactive
-                        render={(attr) => (
-                            <PopperWrapper>
-                                <div className={cx('info-header')}>
-                                    <h3>Thông tin</h3>
-                                    <button className={cx('mark-seen-btn')}>Đánh dấu là đã đọc</button>
-                                </div>
-                                <div className={cx('list-info')}>
-                                    <InfoItem
-                                        title={'🔔 Sự kiện May Fest 2023 chính thức diễn ra từ hôm nay! 🔔'}
-                                        time={'thg 4 1, 12:00 SA'}
-                                    ></InfoItem>
-                                    <InfoItem
-                                        title={'Công bố thể lệ chính thức Viblo May Fest 2023 🏆️✨'}
-                                        time={'thg 4 1, 12:00 SA'}
-                                    ></InfoItem>
-                                </div>
-                                <div className={cx('info-footer')}>
-                                    <button className={cx('all-info-btn')}>Tất cả thông tin</button>
-                                </div>
-                            </PopperWrapper>
-                        )}
-                    >
-                        <span>
-                            <Button type="text" size="icon-btn" leftIcon={<FontAwesomeIcon icon={faInfo} />}></Button>
-                        </span>
-                    </HeadlessTippy>
+                    <div>
+                        <HeadlessTippy
+                            interactive
+                            render={(attr) => (
+                                <PopperWrapper>
+                                    <div className={cx('info-header')}>
+                                        <h3>Thông tin</h3>
+                                        <button className={cx('mark-seen-btn')}>Đánh dấu là đã đọc</button>
+                                    </div>
+                                    <div className={cx('list-info')}>
+                                        <InfoItem
+                                            title={'🔔 Sự kiện May Fest 2023 chính thức diễn ra từ hôm nay! 🔔'}
+                                            time={'thg 4 1, 12:00 SA'}
+                                        ></InfoItem>
+                                        <InfoItem
+                                            title={'Công bố thể lệ chính thức Viblo May Fest 2023 🏆️✨'}
+                                            time={'thg 4 1, 12:00 SA'}
+                                        ></InfoItem>
+                                    </div>
+                                    <div className={cx('info-footer')}>
+                                        <button className={cx('all-info-btn')}>Tất cả thông tin</button>
+                                    </div>
+                                </PopperWrapper>
+                            )}
+                        >
+                            <span>
+                                <Button
+                                    type="text"
+                                    size="icon-btn"
+                                    leftIcon={<FontAwesomeIcon icon={faInfo} />}
+                                ></Button>
+                            </span>
+                        </HeadlessTippy>
+                    </div>
                     {currentUser && (
                         <div className={cx('action')}>
                             <Tippy content="Notification" placement="bottom">

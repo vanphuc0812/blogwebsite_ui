@@ -5,12 +5,12 @@ import { faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons'
 import { faCircleXmark } from '@fortawesome/free-regular-svg-icons';
 import classNames from 'classnames/bind';
 
-import { useDebounce } from '../../../../hooks';
-import * as searchService from '../../../../apiService/searchService';
+import { useDebounce } from '../../../hooks';
+import * as searchService from '../../../services/searchService';
 import styles from './Search.module.scss';
-import { Wrapper as PopperWrapper } from '../../../Popper';
-import BlogItem from '../../../BlogItem';
-import Button from '../../../Button';
+import { Wrapper as PopperWrapper } from '../../../Components/Popper';
+import BlogItem from '../../../Components/BlogItem';
+import Button from '../../../Components/Button';
 
 const cx = classNames.bind(styles);
 function Search() {
