@@ -3,12 +3,12 @@ import BlogView from '../Components/pages/BlogView';
 import Upload from '../Components/pages/Upload';
 import { HeaderOnly } from '../Components/Layout';
 import Search from '../Components/pages/Search';
-
+import routesConfig from '../config/routes';
 const publicRoutes = [
-    { path: '/', component: Home },
-    { path: '/blog/:transliterated', component: BlogView },
-    { path: '/upload', component: Upload, layout: HeaderOnly },
-    { path: '/search', component: Search, layout: null },
+    { path: routesConfig.home, component: Home },
+    { path: routesConfig.blog, component: BlogView },
+    { path: routesConfig.write, component: Upload, layout: HeaderOnly },
+    { path: routesConfig.search, component: Search, layout: null },
 ];
 // require login
 const privateRoutes = [];

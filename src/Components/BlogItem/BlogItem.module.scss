@@ -11,23 +11,24 @@
 
 .title {
     width: 100%;
-    color: var(--gray-dark);
+    color: var(--dark);
 }
 
 .info {
-    display: flex;
-    align-items: column;
+    display: inline-flex;
+    align-items: center;
 
     .post-date {
         color: var(--gray);
         margin-left: 3px;
-        flex: 1;
+        // flex: 1;
     }
     .author {
-        width: 120px;
+        // width: 120px;
+        font-weight: 400;
         color: var(--green);
     }
 }
 .content {
-    color: var(--gray-dark);
+    color: var(--dark);
 }

@@ -17,6 +17,7 @@ import Menu from '../../../Popper/Menu';
 import { LOGGED_MENU_ITEMS, UNLOGGED_MENU_ITEMS } from './Utils';
 import Image from '../../../Image';
 import Search from '../Search';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -46,7 +47,9 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('header-menu')}>
-                    <img className={cx('logo')} src={images.logo} alt="PLog" />
+                    <Link to="/">
+                        <img className={cx('logo')} src={images.logo} alt="PLog" />
+                    </Link>
                     <div className={cx('medium')}>
                         <Button size="small" type="text">
                             Bài viết

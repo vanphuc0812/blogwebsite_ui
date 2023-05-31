@@ -14,7 +14,10 @@ import Button from '../../../Button';
 
 const cx = classNames.bind(styles);
 function Search() {
-    const [searchResult, setSearchResult] = useState([]);
+    const [searchBlogResult, setSearchBlogResult] = useState([]);
+    const [searchQuestionResult, setSearchQuestionResult] = useState([]);
+    const [searchAuthorResult, setSearchAuthor] = useState([]);
+
     const [searchInputValue, setSearchInputValue] = useState('');
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
@@ -25,7 +28,7 @@ function Search() {
 
     useEffect(() => {
         if (!debounced.trim()) {
-            setSearchResult([]);
+            setSearchBlogResult([]);
             return;
         }
         setLoading(true);
@@ -33,7 +36,7 @@ function Search() {
         const fetchAPI = async () => {
             setLoading(true);
             const res = await searchService.search(debounced);
-            setSearchResult(res);
+            setSearchBlogResult(res);
             setLoading(false);
         };
 
@@ -42,7 +45,7 @@ function Search() {
 
     const handleClear = () => {
         setSearchInputValue('');
-        setSearchResult([]);
+        setSearchBlogResult([]);
         inputRef.current.focus();
     };
 
@@ -55,15 +58,38 @@ function Search() {
             <HeadlessTippy
                 interactive
                 onClickOutside={handleHideResult}
-                visible={showResult && searchResult.length > 0}
+                visible={
+                    showResult && searchBlogResult.length > 0 // ||
+                }
                 render={(attr) => (
                     <div className={cx('search-result')}>
                         <PopperWrapper>
-                            <h3 className={cx('search-label')}>Bài viết</h3>
-                            {searchResult.map((searchItem) => (
-                                <BlogItem key={searchItem.id} data={searchItem} />
-                            ))}
-                            <h3 className={cx('search-label')}>Hỏi đáp</h3>
+                            {searchBlogResult.length > 0 && (
+                                <div className={cx('blogpost-search-result')}>
+                                    <h3 className={cx('search-label')}>Bài viết</h3>
+                                    {searchBlogResult.map((searchItem) => (
+                                        <BlogItem key={searchItem.id} data={searchItem} />
+                                    ))}
+                                </div>
+                            )}
+
+                            {searchAuthorResult.length > 0 && (
+                                <div className={cx('author-search-result')}>
+                                    <h3 className={cx('search-label')}>Tác giả</h3>
+                                    {searchAuthorResult.map((searchItem) => (
+                                        <BlogItem key={searchItem.id} data={searchItem} />
+                                    ))}
+                                </div>
+                            )}
+
+                            {searchQuestionResult.length > 0 && (
+                                <div className={cx('question-search-result')}>
+                                    <h3 className={cx('search-label')}>Hỏi đáp</h3>
+                                    {searchQuestionResult.map((searchItem) => (
+                                        <BlogItem key={searchItem.id} data={searchItem} />
+                                    ))}
+                                </div>
+                            )}
                         </PopperWrapper>
                     </div>
                 )}
