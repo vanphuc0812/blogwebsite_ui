@@ -8,9 +8,34 @@
 .container {
     margin-top: var(--default-layout-header-height);
     width: var(--default-layout-width);
+    max-width: 100%;
     display: flex;
 }
 
 .content {
-    flex: 1;
+    width: 840px;
+}
+
+@media screen and (max-width: 1000px) {
+    .content {
+        width: 600px;
+    }
+    .container {
+        width: 900px;
+    }
+}
+@media screen and (max-width: 890px) {
+    .sidebar {
+        display: none;
+    }
+    .content,
+    .container {
+        width: 600px;
+    }
+}
+@media screen and (max-width: 610px) {
+    .content,
+    .container {
+        width: 400px;
+    }
 }

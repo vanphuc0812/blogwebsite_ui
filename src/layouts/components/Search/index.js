@@ -6,7 +6,7 @@ import { faCircleXmark } from '@fortawesome/free-regular-svg-icons';
 import classNames from 'classnames/bind';
 
 import { useDebounce } from '../../../hooks';
-import * as searchService from '../../../services/searchService';
+import * as apiService from '../../../services/apiService';
 import styles from './Search.module.scss';
 import { Wrapper as PopperWrapper } from '../../../Components/Popper';
 import BlogItem from '../../../Components/BlogItem';
@@ -36,8 +36,8 @@ function Search() {
 
         const fetchAPI = async () => {
             setLoading(true);
-            const resBlog = await searchService.search('BlogsManagement/SearchBlogs', debouncedValue);
-            const resAuthor = await searchService.search('UsersManagement/SearchUsers', debouncedValue);
+            const resBlog = await apiService.search('BlogsManagement/SearchBlogs', debouncedValue);
+            const resAuthor = await apiService.search('UsersManagement/SearchUsers', debouncedValue);
             setSearchBlogResult(resBlog);
             setSearchAuthorResult(resAuthor);
             setLoading(false);

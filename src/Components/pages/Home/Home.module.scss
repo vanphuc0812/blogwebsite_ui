@@ -1,0 +1,29 @@
+.blog-item-wrapper {
+    display: inline-flex;
+    align-items: top;
+    width: 100%;
+    margin: 10px 0;
+    box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+    font-size: 1.15rem;
+}
+
+.avatar {
+    height: 40px;
+}
+.info {
+    margin-left: 10px;
+}
+.post-date {
+    color: var(--gray);
+    margin-left: 3px;
+    // flex: 1;
+}
+.author {
+    // width: 120px;
+    font-weight: 400;
+    color: var(--green);
+}
+.title {
+    width: 100%;
+    color: var(--dark);
+}
