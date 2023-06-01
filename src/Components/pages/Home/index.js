@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 import * as apiService from '../../../services/apiService';
-import BlogItem from '../../BlogItem';
 import classNames from 'classnames/bind';
 import styles from './Home.module.scss';
 import Image from '../../Image';
@@ -31,12 +30,10 @@ function Home() {
                         src={'http://localhost:8080/api/files/' + blogItem.user.avatar}
                     ></Image>
                     <div className={cx('info')}>
-                        <div className={cx('info')}>
-                            <a href={'/blogItemger/' + blogItem.user.username} className={cx('author')}>
-                                {blogItem.user.name}
-                                <span className={cx('post-date')}>đăng vào lúc {blogItem.createdAt}</span>
-                            </a>
-                        </div>
+                        <a href={'/blogItemger/' + blogItem.user.username} className={cx('author')}>
+                            {blogItem.user.name}
+                            <span className={cx('post-date')}>đăng vào lúc {blogItem.createdAt}</span>
+                        </a>
                         <Link to={`/blogItem/${blogItem.transliterated}`}>
                             <h4 className={cx('title')}>{blogItem.title}</h4>
                         </Link>
