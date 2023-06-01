@@ -1,0 +1,31 @@
+.wrapper {
+    display: block;
+    align-items: center;
+    margin: 0 10px;
+    padding: 10px 0;
+    font-size: 1.1rem;
+    &:hover {
+        background-color: var(--green-hover);
+    }
+}
+
+.title {
+}
+
+.name {
+    display: inline-flex;
+    align-items: center;
+
+    .username {
+        color: var(--gray);
+        margin-left: 3px;
+        // flex: 1;
+    }
+    .authorName {
+        width: 100%;
+        color: var(--dark);
+    }
+}
+.writes {
+    color: var(--gray);
+}

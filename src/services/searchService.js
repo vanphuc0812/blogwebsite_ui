@@ -1,8 +1,8 @@
 import * as http from '../Utils/http';
 
-export const search = async (keyword, type = 'less') => {
+export const search = async (path, keyword, type = 'less') => {
     try {
-        const res = await http.get('BlogsManagement/SearchBlogs', {
+        const res = await http.get(path, {
             params: {
                 keyword: keyword,
                 type: type,

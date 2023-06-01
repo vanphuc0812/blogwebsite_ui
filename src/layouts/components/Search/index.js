@@ -11,41 +11,45 @@ import styles from './Search.module.scss';
 import { Wrapper as PopperWrapper } from '../../../Components/Popper';
 import BlogItem from '../../../Components/BlogItem';
 import Button from '../../../Components/Button';
+import AuthorItem from '../../../Components/AuthorItem';
 
 const cx = classNames.bind(styles);
 function Search() {
     const [searchBlogResult, setSearchBlogResult] = useState([]);
-    const [searchQuestionResult, setSearchQuestionResult] = useState([]);
-    const [searchAuthorResult, setSearchAuthor] = useState([]);
+    const [searchAuthorResult, setSearchAuthorResult] = useState([]);
 
     const [searchInputValue, setSearchInputValue] = useState('');
-    const [showResult, setShowResult] = useState(true);
+    const [showResult, setShowResult] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const debounced = useDebounce(searchInputValue, 800);
+    const debouncedValue = useDebounce(searchInputValue, 800);
 
     const inputRef = useRef();
 
     useEffect(() => {
-        if (!debounced.trim()) {
+        if (!debouncedValue.trim()) {
             setSearchBlogResult([]);
+            setSearchAuthorResult([]);
             return;
         }
         setLoading(true);
 
         const fetchAPI = async () => {
             setLoading(true);
-            const res = await searchService.search(debounced);
-            setSearchBlogResult(res);
+            const resBlog = await searchService.search('BlogsManagement/SearchBlogs', debouncedValue);
+            const resAuthor = await searchService.search('UsersManagement/SearchUsers', debouncedValue);
+            setSearchBlogResult(resBlog);
+            setSearchAuthorResult(resAuthor);
             setLoading(false);
         };
 
         fetchAPI();
-    }, [debounced]);
+    }, [debouncedValue]);
 
     const handleClear = () => {
         setSearchInputValue('');
         setSearchBlogResult([]);
+        setSearchAuthorResult([]);
         inputRef.current.focus();
     };
 
@@ -60,35 +64,23 @@ function Search() {
                 <HeadlessTippy
                     interactive
                     onClickOutside={handleHideResult}
-                    visible={
-                        showResult && searchBlogResult.length > 0 // ||
-                    }
+                    visible={showResult && (searchBlogResult.length > 0 || searchAuthorResult.length > 0)}
                     render={(attr) => (
                         <div className={cx('search-result')}>
                             <PopperWrapper>
                                 {searchBlogResult.length > 0 && (
                                     <div className={cx('blogpost-search-result')}>
                                         <h3 className={cx('search-label')}>Bài viết</h3>
-                                        {searchBlogResult.map((searchItem) => (
-                                            <BlogItem key={searchItem.id} data={searchItem} />
+                                        {searchBlogResult.map((item) => (
+                                            <BlogItem key={item.id} data={item} />
                                         ))}
                                     </div>
                                 )}
-
                                 {searchAuthorResult.length > 0 && (
                                     <div className={cx('author-search-result')}>
                                         <h3 className={cx('search-label')}>Tác giả</h3>
-                                        {searchAuthorResult.map((searchItem) => (
-                                            <BlogItem key={searchItem.id} data={searchItem} />
-                                        ))}
-                                    </div>
-                                )}
-
-                                {searchQuestionResult.length > 0 && (
-                                    <div className={cx('question-search-result')}>
-                                        <h3 className={cx('search-label')}>Hỏi đáp</h3>
-                                        {searchQuestionResult.map((searchItem) => (
-                                            <BlogItem key={searchItem.id} data={searchItem} />
+                                        {searchAuthorResult.map((item) => (
+                                            <AuthorItem key={item.id} data={item} />
                                         ))}
                                     </div>
                                 )}
