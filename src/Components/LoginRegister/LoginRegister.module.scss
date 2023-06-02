@@ -1,0 +1,92 @@
+.wrapper {
+    --default-width: 500px;
+    --default-padding: 50px;
+    height: 500px;
+    width: var(--default-width);
+    padding: var(--default-padding);
+    font-size: 1.5rem;
+    background-image: linear-gradient(to bottom, #ffffff, #f7f7f7, #eeeded);
+}
+
+.logo {
+    & img {
+        object-fit: contain;
+        height: 60px;
+        width: calc(var(--default-width) - var(--default-padding) * 2);
+    }
+    & h4 {
+        height: 50px;
+        width: calc(var(--default-width) - var(--default-padding) * 2);
+        text-align: center;
+        color: var(--green-semi-dark);
+    }
+}
+
+.username,
+.password {
+    display: inline-flex;
+    align-items: center;
+    flex: 1;
+    color: var(--gray-dark);
+    width: calc(var(--default-width) - var(--default-padding) * 2);
+    height: 40px;
+    padding: 5px;
+    margin-bottom: 15px;
+    border: 1px solid var(--gray-white);
+    border-radius: 5px;
+    background-color: var(--green-hover);
+    caret-color: var(--green);
+    & input {
+        margin-left: 8px;
+        width: calc(var(--default-width) - var(--default-padding) * 2 - 50px);
+        height: 40px;
+    }
+}
+
+.login-icon {
+    border-right: 1px solid var(--gray-white);
+    border-radius: 0;
+}
+
+.submit-btn {
+    width: calc(var(--default-width) - var(--default-padding) * 2);
+}
+
+.navigate {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: calc(var(--default-width) - var(--default-padding) * 2);
+    height: 30px;
+    font-size: 1.2rem;
+    & p {
+        color: var(--green-semi-dark);
+
+        &:hover {
+            color: var(--green);
+        }
+    }
+}
+
+.login-as-lbl {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    width: calc(var(--default-width) - var(--default-padding) * 2);
+    color: var(--gray-dark);
+    font-weight: 400;
+    & p {
+        min-width: 100px;
+        text-align: center;
+    }
+
+    & hr {
+        color: var(--gray);
+    }
+}
+.login-as-btn {
+    width: calc(var(--default-width) - var(--default-padding) * 2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

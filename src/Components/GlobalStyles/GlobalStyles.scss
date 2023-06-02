@@ -11,10 +11,10 @@
     --red: #f56c6c;
     --orange: #f25f43;
     --yellow: #e6a23c;
-    --green: #7dc558;
+    --green: #369e03;
     --green-low: #cef1bc;
     --green-dark: #1f5a01;
-    --green-semi-dark: #256b01;
+    --green-semi-dark: #329102;
     --green-hover: rgba(96, 236, 103, 0.06);
     --teal: #8eb4cb;
     --cyan: #17a2b8;
@@ -63,6 +63,7 @@ input,
 [tabinex] {
     outline: none;
     border: none;
+    background-color: transparent;
 }
 
 a {

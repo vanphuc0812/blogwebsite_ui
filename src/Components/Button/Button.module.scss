@@ -24,26 +24,26 @@
 //button type
 .primary {
     color: var(--white);
-    background-color: var(--green);
+    background-color: var(--green-semi-dark);
 
     &:hover {
-        background-color: var(--green-low);
+        background-color: var(--green-dark);
     }
 }
 
 .outline {
-    color: var(--green-semi-dark);
-    border-color: currentColor;
+    border-color: var(--gray);
 
     &:hover {
-        background-color: rgba(96, 236, 103, 0.06);
+        background-color: var(--green-low);
+        color: var(--green-dark);
     }
 }
 
 .text {
     color: var(--gray);
     &:hover {
-        color: var(--green);
+        color: var(--green-semi-dark);
     }
     + .text {
         margin-left: 0px;

@@ -22,3 +22,12 @@ export const fetchAll = async (path) => {
         console.log(error);
     }
 };
+
+export const postJson = async (path, data) => {
+    try {
+        const res = await http.post(path, data);
+        return res.content;
+    } catch (error) {
+        console.log(error);
+    }
+};

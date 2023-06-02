@@ -23,11 +23,11 @@ function Home() {
     return (
         <div>
             {searchBlogResult.map((blogItem) => (
-                <div className={cx('blog-item-wrapper')}>
+                <div key={blogItem.id} className={cx('blog-item-wrapper')}>
                     <Image
                         to={'/blogItemger/' + blogItem.user.username}
                         className={cx('avatar')}
-                        src={'http://localhost:8080/api/files/' + blogItem.user.avatar}
+                        src={process.env.REACT_APP_BASE_URL + 'api/files/' + blogItem.user.avatar}
                     ></Image>
                     <div className={cx('info')}>
                         <a href={'/blogItemger/' + blogItem.user.username} className={cx('author')}>

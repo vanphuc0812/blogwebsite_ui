@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import HeadlessTippy from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfo, faMagnifyingGlass, faRightToBracket, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
-import { faCircleXmark, faBell, faPenToSquare } from '@fortawesome/free-regular-svg-icons';
+import { faBell, faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import images from '../../../asset/images';
@@ -19,6 +19,7 @@ import Image from '../../../Components/Image';
 import Search from '../Search';
 import { Link } from 'react-router-dom';
 import config from '../../../config';
+import LoginRegisterPopup from '../../../Components/LoginRegister';
 
 const cx = classNames.bind(styles);
 
@@ -30,14 +31,14 @@ function Header() {
     const handleSignin = () => {
         setCurrentUser(true);
     };
-    const handleSignOut = () => {
-        setCurrentUser(false);
-    };
+
     const handleMenuChange = (menuItem) => {
         switch (menuItem.title) {
             case 'Sign out':
                 setCurrentUser(false);
-
+                break;
+            default:
+                //do nothing
                 break;
         }
     };
@@ -137,13 +138,17 @@ function Header() {
                     {!currentUser && (
                         <div className={cx('action')}>
                             <div>
-                                <Button
-                                    className={cx('large')}
-                                    leftIcon={<FontAwesomeIcon icon={faRightToBracket} />}
-                                    onClick={handleSignin}
-                                >
-                                    Đăng nhập/Đăng ký
-                                </Button>
+                                <LoginRegisterPopup>
+                                    <span>
+                                        <Button
+                                            className={cx('large')}
+                                            leftIcon={<FontAwesomeIcon icon={faRightToBracket} />}
+                                            // onClick={handleSignin}
+                                        >
+                                            Đăng nhập/Đăng ký
+                                        </Button>
+                                    </span>
+                                </LoginRegisterPopup>
                                 <Button
                                     className={cx('un-large')}
                                     size="icon-btn"

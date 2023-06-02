@@ -8,7 +8,7 @@ import Header from './Header';
 
 const cx = classNames.bind(styles);
 
-function Menu({ children, items = [], onchange = () => {}, hideOnClick = false }) {
+function Menu({ children, items = [], onchange = () => {}, hideOnClick = false, trigger = 'mouseenter focus' }) {
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1];
 
@@ -42,15 +42,16 @@ function Menu({ children, items = [], onchange = () => {}, hideOnClick = false }
 
     return (
         <Tippy
-            delay={[0, 700]}
+            delay={[0, 200]}
             offset={[12, 8]}
             interactive
             placement="bottom-end"
             hideOnClick={hideOnClick}
+            trigger={trigger}
             render={(attr) => (
                 <div className={cx('content')} tabIndex="-1" {...attr}>
                     <PopperWrapper>
-                        {history.length > 1 && <Header title={current.title} onBack={handleBack} />}
+                        {current.title && <Header title={current.title} onBack={handleBack} />}
                         <div className={cx('menu-body')}>{renderItems()}</div>
                     </PopperWrapper>
                 </div>
