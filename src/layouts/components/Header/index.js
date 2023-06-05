@@ -19,7 +19,6 @@ import Image from '../../../Components/Image';
 import Search from '../Search';
 import { Link } from 'react-router-dom';
 import config from '../../../config';
-import LoginRegisterPopup from '../../../Components/LoginRegister';
 
 const cx = classNames.bind(styles);
 
@@ -138,17 +137,14 @@ function Header() {
                     {!currentUser && (
                         <div className={cx('action')}>
                             <div>
-                                <LoginRegisterPopup>
-                                    <span>
-                                        <Button
-                                            className={cx('large')}
-                                            leftIcon={<FontAwesomeIcon icon={faRightToBracket} />}
-                                            // onClick={handleSignin}
-                                        >
-                                            Đăng nhập/Đăng ký
-                                        </Button>
-                                    </span>
-                                </LoginRegisterPopup>
+                                <Button
+                                    to={'/auth/login'}
+                                    className={cx('large')}
+                                    leftIcon={<FontAwesomeIcon icon={faRightToBracket} />}
+                                    // onClick={handleSignin}
+                                >
+                                    Đăng nhập/Đăng ký
+                                </Button>
                                 <Button
                                     className={cx('un-large')}
                                     size="icon-btn"
