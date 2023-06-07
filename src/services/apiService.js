@@ -19,15 +19,16 @@ export const fetchAll = async (path) => {
         const res = await http.get(path);
         return res.content;
     } catch (error) {
-        console.log(error);
+        return error.response.data;
     }
 };
 
 export const postJson = async (path, data) => {
     try {
         const res = await http.post(path, data);
-        return res.content;
+        return res;
     } catch (error) {
         console.log(error);
+        return error.response.data;
     }
 };
