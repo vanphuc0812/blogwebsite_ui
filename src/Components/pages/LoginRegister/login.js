@@ -15,6 +15,7 @@ import classNames from 'classnames/bind';
 import styles from './LoginRegister.module.scss';
 import Button from '../../Button';
 import images from '../../../asset/images';
+
 import * as apiService from '../../../services/apiService';
 import { action } from '../../../storage';
 
@@ -127,6 +128,7 @@ const Login = () => {
                     Github
                 </Button>
             </div>
+            <ToastContainer />
             <ToastContainer />
         </div>
     );

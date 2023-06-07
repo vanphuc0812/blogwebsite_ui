@@ -3,7 +3,11 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import GlobalStyles from './Components/GlobalStyles';
+<<<<<<< HEAD
 import { StoreProvider } from './storage';
+=======
+import StoreProvider from './storage/provider';
+>>>>>>> 965044c0b41feae925034fecd3c9acd30e9e0eb6
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
