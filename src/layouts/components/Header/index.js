@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import HeadlessTippy from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
@@ -19,22 +18,23 @@ import Image from '../../../Components/Image';
 import Search from '../Search';
 import { Link } from 'react-router-dom';
 import config from '../../../config';
+import { action, useStore } from '../../../storage';
 
 const cx = classNames.bind(styles);
 
 function Header() {
     //test
-    const [currentUser, setCurrentUser] = useState(false);
+    const [store, dispatch] = useStore();
+    var currentUser = store.loggedUser;
+    console.log(currentUser);
 
     // Handle logic
-    const handleSignin = () => {
-        setCurrentUser(true);
-    };
+    const handleSignin = () => {};
 
     const handleMenuChange = (menuItem) => {
         switch (menuItem.title) {
             case 'Sign out':
-                setCurrentUser(false);
+                dispatch(action.setLoggedUser({}));
                 break;
             default:
                 //do nothing
@@ -105,7 +105,7 @@ function Header() {
                             </span>
                         </HeadlessTippy>
                     </div>
-                    {currentUser && (
+                    {Object.keys(currentUser).length !== 0 && (
                         <div className={cx('action')}>
                             <Tippy content="Notification" placement="bottom">
                                 <span>
@@ -134,7 +134,7 @@ function Header() {
                             </Menu>
                         </div>
                     )}
-                    {!currentUser && (
+                    {Object.keys(currentUser).length === 0 && (
                         <div className={cx('action')}>
                             <div>
                                 <Button

@@ -1,31 +1,56 @@
-import React, { useState } from 'react';
-import classNames from 'classnames/bind';
-import styles from './LoginRegister.module.scss';
-import images from '../../../asset/images';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useStore } from '../../../storage';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from '../../Button';
 import { faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { faFacebook, faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
+
+import classNames from 'classnames/bind';
+
+import styles from './LoginRegister.module.scss';
+import Button from '../../Button';
+import images from '../../../asset/images';
+
 import * as apiService from '../../../services/apiService';
+import { action } from '../../../storage';
 
 const cx = classNames.bind(styles);
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
+    const [store, dispatch] = useStore();
+    const navigate = useNavigate();
     const handleUsernameChange = (e) => {
         setUsername(e.target.value);
     };
-
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
     };
 
     const submitLogin = () => {
-        const response = apiService.postJson('auth/login', { username, password });
-        //do something with respone
+        console.log(store);
+        const fetchAPI = async () => {
+            const response = await apiService.postJson('auth/login', { username, password });
+
+            if (response.errors.length === 0) {
+                dispatch(action.setLoggedUser(response.content));
+                navigate('/');
+            } else {
+                toast.error('Login failed: ' + response.errors, {
+                    position: toast.POSITION.TOP_CENTER,
+                    hideProgressBar: true,
+                    autoClose: 3000,
+                });
+            }
+        };
+
+        fetchAPI();
     };
 
     return (
@@ -103,6 +128,8 @@ const Login = () => {
                     Github
                 </Button>
             </div>
+            <ToastContainer />
+            <ToastContainer />
         </div>
     );
 };
