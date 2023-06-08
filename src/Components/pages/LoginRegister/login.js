@@ -18,6 +18,8 @@ import images from '../../../asset/images';
 
 import * as apiService from '../../../services/apiService';
 import { action } from '../../../storage';
+import Input from '../../Input/input';
+import config from '../../../config';
 
 const cx = classNames.bind(styles);
 
@@ -26,17 +28,11 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [store, dispatch] = useStore();
     const navigate = useNavigate();
-    const handleUsernameChange = (e) => {
-        setUsername(e.target.value);
-    };
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
 
     const submitLogin = () => {
         console.log(store);
         const fetchAPI = async () => {
-            const response = await apiService.postJson('auth/login', { username, password });
+            const response = await apiService.postJson(config.path.LOGIN, { username, password });
 
             if (response.errors.length === 0) {
                 dispatch(action.setLoggedUser(response.content));
@@ -55,48 +51,38 @@ const Login = () => {
 
     return (
         <div className={cx('wrapper')}>
-            <div className={cx('logo')}>
-                <img src={images.logo} alt="PLog" />
-                <h4>Share your think</h4>
-            </div>
-            <div className={cx('input-box')}>
-                <Button
-                    className={cx('login-icon')}
-                    size="icon-btn"
-                    type="text"
-                    leftIcon={<FontAwesomeIcon icon={faUser} />}
-                />
-                <input
-                    value={username}
-                    type="text"
-                    placeholder="User name or email"
-                    spellCheck={false}
-                    onChange={handleUsernameChange}
-                />
-            </div>
-            <div className={cx('input-box')}>
-                <Button
-                    className={cx('login-icon')}
-                    size="icon-btn"
-                    type="text"
-                    leftIcon={<FontAwesomeIcon icon={faLock} />}
-                />
-                <input
-                    value={password}
-                    type="password"
-                    placeholder="Password"
-                    spellCheck={false}
-                    onChange={handlePasswordChange}
-                />
-            </div>
+            <Link to={config.routes.home}>
+                <div className={cx('logo')}>
+                    <img src={images.logo} alt="PLog" />
+                    <h4>Share your think</h4>
+                </div>
+            </Link>
+            <Input
+                className={cx('username')}
+                value={username}
+                type="text"
+                placeholder="User name"
+                spellCheck={false}
+                onChange={(e) => setUsername(e.target.value)}
+                leftIcon={<FontAwesomeIcon icon={faUser} />}
+            />
+            <Input
+                className={cx('password')}
+                value={password}
+                type="password"
+                placeholder="Password"
+                spellCheck={false}
+                onChange={(e) => setPassword(e.target.value)}
+                leftIcon={<FontAwesomeIcon icon={faLock} />}
+            />
             <Button onClick={submitLogin} className={cx('submit-btn')} size="large">
                 Login
             </Button>
             <div className={cx('navigate')}>
-                <Link to="/auth/forgotPassword">
+                <Link to={config.routes.forgotPassword}>
                     <h5>Forgot password?</h5>
                 </Link>
-                <Link to="/auth/register">
+                <Link to={config.routes.register}>
                     <h5>Sign up</h5>
                 </Link>
             </div>

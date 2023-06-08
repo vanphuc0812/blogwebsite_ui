@@ -12,6 +12,7 @@ import { Wrapper as PopperWrapper } from '../../../Components/Popper';
 import BlogItem from '../../../Components/BlogItem';
 import Button from '../../../Components/Button';
 import AuthorItem from '../../../Components/AuthorItem';
+import config from '../../../config';
 
 const cx = classNames.bind(styles);
 function Search() {
@@ -36,8 +37,8 @@ function Search() {
 
         const fetchAPI = async () => {
             setLoading(true);
-            const resBlog = await apiService.search('BlogsManagement/SearchBlogs', debouncedValue);
-            const resAuthor = await apiService.search('UsersManagement/SearchUsers', debouncedValue);
+            const resBlog = await apiService.search(config.path.SEARCH_BLOG, debouncedValue);
+            const resAuthor = await apiService.search(config.path.SEARCH_USER, debouncedValue);
             setSearchBlogResult(resBlog);
             setSearchAuthorResult(resAuthor);
             setLoading(false);

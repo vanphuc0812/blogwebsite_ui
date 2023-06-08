@@ -4,7 +4,8 @@ const routes = {
     search: '/search',
     write: '/write',
     login: '/auth/login',
-    register: 'auth/register',
+    register: '/auth/register',
+    forgotPassword: '/auth/forgotPassword',
 };
 
 export default routes;

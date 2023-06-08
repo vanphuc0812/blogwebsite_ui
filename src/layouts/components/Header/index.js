@@ -128,7 +128,7 @@ function Header() {
                             <Menu items={LOGGED_MENU_ITEMS} onchange={handleMenuChange}>
                                 <Image
                                     className={cx('avatar')}
-                                    src="https://w0.peakpx.com/wallpaper/549/987/HD-wallpaper-ssj3-goku-ball-dragon-super.jpg"
+                                    src={process.env.REACT_APP_BASE_URL + config.path.FILE_STORAGE + currentUser.avatar}
                                     alt="avatar"
                                 ></Image>
                             </Menu>
@@ -138,10 +138,9 @@ function Header() {
                         <div className={cx('action')}>
                             <div>
                                 <Button
-                                    to={'/auth/login'}
+                                    to={config.routes.login}
                                     className={cx('large')}
                                     leftIcon={<FontAwesomeIcon icon={faRightToBracket} />}
-                                    // onClick={handleSignin}
                                 >
                                     Đăng nhập/Đăng ký
                                 </Button>
@@ -151,6 +150,7 @@ function Header() {
                                     type="text"
                                     leftIcon={<FontAwesomeIcon icon={faRightToBracket} />}
                                     onClick={handleSignin}
+                                    to={config.routes.login}
                                 ></Button>
                             </div>
                             <Menu items={UNLOGGED_MENU_ITEMS}>

@@ -31,23 +31,51 @@
     }
 }
 
-.input-box {
-    display: inline-flex;
+.user-detail {
+    display: flex;
     align-items: center;
-    flex: 1;
-    color: var(--gray-dark);
-    width: calc(var(--default-width) - var(--default-padding) * 2);
-    height: 40px;
-    padding: 5px;
-    margin-bottom: 15px;
-    border: 1px solid var(--gray-white);
-    border-radius: 5px;
-    background-color: var(--green-hover);
-    caret-color: var(--green);
-    & input {
-        margin-left: 8px;
-        width: calc(var(--default-width) - var(--default-padding) * 2 - 50px);
+    justify-content: space-between;
+    margin-bottom: 12px;
+
+    & .name {
+        width: calc(var(--default-width) - var(--default-padding) * 2 - 140px);
+    }
+    & .gender {
+        display: inline-flex;
+        align-items: center;
+        color: var(--gray);
         height: 40px;
+        width: 120px;
+        padding: 5px;
+        border: 1px solid var(--gray-white);
+        border-radius: 5px;
+        background-color: var(--green-hover);
+        caret-color: var(--green);
+
+        & select {
+            width: calc(100% - 25px);
+            margin-left: 8px;
+            height: 40px;
+            background-color: transparent;
+            border: none;
+        }
+    }
+}
+
+.email,
+.username {
+    width: calc(var(--default-width) - var(--default-padding) * 2);
+    margin-bottom: 12px;
+}
+
+.password {
+    width: calc(var(--default-width) - var(--default-padding) * 2);
+    display: flex;
+    justify-content: space-between;
+    & .password,
+    .confirm-password {
+        width: calc((var(--default-width) - var(--default-padding) * 2) / 2 - 10px);
+        margin-bottom: 10px;
     }
 }
 
@@ -57,6 +85,7 @@
 }
 
 .submit-btn {
+    margin-top: 20px;
     width: calc(var(--default-width) - var(--default-padding) * 2);
 }
 
