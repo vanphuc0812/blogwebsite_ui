@@ -1,24 +1,33 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as apiService from '../../../services/apiService';
 import classNames from 'classnames/bind';
 import styles from './Home.module.scss';
 import Image from '../../Image';
 import { Link } from 'react-router-dom';
-
+import Pagination from '../../Pagination/pagination';
+import config from '../../../config';
 const cx = classNames.bind(styles);
 
 function Home() {
+    console.log('rerender');
     const [searchBlogResult, setSearchBlogResult] = useState([]);
-
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState();
     useEffect(() => {
         const fetchAPI = async () => {
-            const resBlog = await apiService.fetchAll('BlogsManagement/GetAllBlogs');
-            setSearchBlogResult(resBlog);
+            const resBlog = await apiService.fetch(config.path.GET_ALL_BLOG, {
+                params: {
+                    page: currentPage - 1,
+                    size: 10,
+                    sort: 'createdAt',
+                },
+            });
+            setTotalPages(resBlog.totalPages);
+            setSearchBlogResult(resBlog.content);
         };
 
         fetchAPI();
-    }, []);
+    }, [currentPage]);
 
     return (
         <div>
@@ -41,6 +50,11 @@ function Home() {
                     </div>
                 </div>
             ))}
+            <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={(number) => setCurrentPage(number)}
+            />
         </div>
     );
 }

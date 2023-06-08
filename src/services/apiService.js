@@ -14,6 +14,15 @@ export const search = async (path, keyword, type = 'less') => {
     }
 };
 
+export const fetch = async (path, param) => {
+    try {
+        const res = await http.get(path, param);
+        return res.content;
+    } catch (error) {
+        return error.response.data;
+    }
+};
+
 export const fetchAll = async (path) => {
     try {
         const res = await http.get(path);
