@@ -10,6 +10,14 @@
 .avatar {
     height: 40px;
     width: 40px;
+
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border: 1.5px solid transparent;
+    margin: 0 10px;
+    object-fit: cover;
 }
 .info {
     margin-left: 10px;
@@ -27,4 +35,6 @@
 .title {
     width: 100%;
     color: var(--dark);
+    font-size: 1.5rem;
+    font-weight: 400;
 }

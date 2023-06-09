@@ -93,7 +93,9 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             );
         }
 
-        return pageButtons;
+        return pageButtons.filter((button, index) => {
+            return pageButtons.indexOf(pageButtons.find((btn) => btn.key === button.key)) === index;
+        });
     };
     return (
         <div className={cx('wrapper')}>

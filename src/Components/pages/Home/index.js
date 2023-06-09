@@ -6,23 +6,27 @@ import Image from '../../Image';
 import { Link } from 'react-router-dom';
 import Pagination from '../../Pagination/pagination';
 import config from '../../../config';
+import Delayed from '../../Delay/delay';
 const cx = classNames.bind(styles);
 
 function Home() {
     const [searchBlogResult, setSearchBlogResult] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState();
+    const [totalPages, setTotalPages] = useState(0);
+    const [isFetched, setIsFetch] = useState(false);
+
     useEffect(() => {
         const fetchAPI = async () => {
             const resBlog = await apiService.fetch(config.path.GET_ALL_BLOG, {
                 params: {
                     page: currentPage - 1,
-                    size: 10,
+                    size: 34,
                     sort: 'createdAt',
                 },
             });
             setTotalPages(resBlog.totalPages);
             setSearchBlogResult(resBlog.content);
+            setIsFetch(true);
         };
 
         fetchAPI();
@@ -33,7 +37,7 @@ function Home() {
             {searchBlogResult.map((blogItem) => (
                 <div key={blogItem.id} className={cx('blog-item-wrapper')}>
                     <Image
-                        to={'/blogItemger/' + blogItem.user.username}
+                        to={'/blog/' + blogItem.user.username}
                         className={cx('avatar')}
                         src={process.env.REACT_APP_BASE_URL + 'api/files/' + blogItem.user.avatar}
                     ></Image>
@@ -49,11 +53,13 @@ function Home() {
                     </div>
                 </div>
             ))}
-            <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={(number) => setCurrentPage(number)}
-            />
+            {isFetched && (
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={(number) => setCurrentPage(number)}
+                />
+            )}
         </div>
     );
 }
