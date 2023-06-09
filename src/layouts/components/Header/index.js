@@ -1,6 +1,7 @@
 import HeadlessTippy from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
+import Cookies from 'js-cookie';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfo, faMagnifyingGlass, faRightToBracket, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
@@ -23,18 +24,15 @@ import { action, useStore } from '../../../storage';
 const cx = classNames.bind(styles);
 
 function Header() {
-    //test
     const [store, dispatch] = useStore();
-    var currentUser = store.loggedUser;
-    console.log(currentUser);
+    var currentUser = typeof store !== 'undefined' ? store.loggedUser : false;
 
     // Handle logic
-    const handleSignin = () => {};
-
     const handleMenuChange = (menuItem) => {
         switch (menuItem.title) {
             case 'Sign out':
-                dispatch(action.setLoggedUser({}));
+                dispatch(action.removeLoggedUser());
+
                 break;
             default:
                 //do nothing
@@ -105,7 +103,7 @@ function Header() {
                             </span>
                         </HeadlessTippy>
                     </div>
-                    {Object.keys(currentUser).length !== 0 && (
+                    {currentUser && (
                         <div className={cx('action')}>
                             <Tippy content="Notification" placement="bottom">
                                 <span>
@@ -134,7 +132,7 @@ function Header() {
                             </Menu>
                         </div>
                     )}
-                    {Object.keys(currentUser).length === 0 && (
+                    {!currentUser && (
                         <div className={cx('action')}>
                             <div>
                                 <Button
@@ -149,7 +147,6 @@ function Header() {
                                     size="icon-btn"
                                     type="text"
                                     leftIcon={<FontAwesomeIcon icon={faRightToBracket} />}
-                                    onClick={handleSignin}
                                     to={config.routes.login}
                                 ></Button>
                             </div>

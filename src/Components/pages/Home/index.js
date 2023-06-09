@@ -9,7 +9,6 @@ import config from '../../../config';
 const cx = classNames.bind(styles);
 
 function Home() {
-    console.log('rerender');
     const [searchBlogResult, setSearchBlogResult] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState();

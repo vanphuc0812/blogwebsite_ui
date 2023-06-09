@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useStore } from '../../../storage';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -15,11 +14,10 @@ import classNames from 'classnames/bind';
 import styles from './LoginRegister.module.scss';
 import Button from '../../Button';
 import images from '../../../asset/images';
-
 import * as apiService from '../../../services/apiService';
-import { action } from '../../../storage';
 import Input from '../../Input/input';
 import config from '../../../config';
+import { useStore, action } from '../../../storage';
 
 const cx = classNames.bind(styles);
 
