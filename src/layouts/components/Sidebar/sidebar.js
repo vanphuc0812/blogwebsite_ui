@@ -8,7 +8,7 @@ function Sidebar({ className }) {
 
     return (
         <aside className={classes}>
-            <h2>Sidebar</h2>
+            <h2 className={cx('title')}>BEST BLOGER</h2>
         </aside>
     );
 }

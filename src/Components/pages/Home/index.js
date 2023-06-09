@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as apiService from '../../../services/apiService';
 import classNames from 'classnames/bind';
 import styles from './Home.module.scss';
@@ -6,7 +6,6 @@ import Image from '../../Image';
 import { Link } from 'react-router-dom';
 import Pagination from '../../Pagination/pagination';
 import config from '../../../config';
-import Delayed from '../../Delay/delay';
 const cx = classNames.bind(styles);
 
 function Home() {
@@ -20,7 +19,7 @@ function Home() {
             const resBlog = await apiService.fetch(config.path.GET_ALL_BLOG, {
                 params: {
                     page: currentPage - 1,
-                    size: 34,
+                    size: 10,
                     sort: 'createdAt',
                 },
             });
@@ -33,7 +32,8 @@ function Home() {
     }, [currentPage]);
 
     return (
-        <div>
+        <div className={cx('wrapper')}>
+            {isFetched && <h2 className={cx('title')}>THE NEWEST BLOGS</h2>}
             {searchBlogResult.map((blogItem) => (
                 <div key={blogItem.id} className={cx('blog-item-wrapper')}>
                     <Image
@@ -47,7 +47,7 @@ function Home() {
                             <span className={cx('post-date')}>đăng vào lúc {blogItem.createdAt}</span>
                         </a>
                         <Link to={`/blogItem/${blogItem.transliterated}`}>
-                            <h4 className={cx('title')}>{blogItem.title}</h4>
+                            <h4 className={cx('blog-title')}>{blogItem.title}</h4>
                         </Link>
                         <p className={cx('content')}>{blogItem.shortContent.slice(0, 200) + '...'}</p>
                     </div>

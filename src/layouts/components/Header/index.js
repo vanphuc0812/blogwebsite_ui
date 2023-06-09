@@ -1,7 +1,6 @@
 import HeadlessTippy from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
-import Cookies from 'js-cookie';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfo, faMagnifyingGlass, faRightToBracket, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';

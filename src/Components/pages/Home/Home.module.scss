@@ -1,9 +1,22 @@
+.wrapper {
+    padding-top: 30px;
+}
+
+.title {
+    font-size: 2rem;
+    width: 100%;
+    background-color: var(--green-low);
+    color: var(--green-dark);
+    padding: 10px 10px;
+}
+
 .blog-item-wrapper {
     display: inline-flex;
     align-items: top;
     width: 100%;
-    margin: 10px 0;
-    box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+    padding: 10px 0;
+    border-bottom: 1px solid var(--green-low);
+    border-left: 3px solid var(--green-low);
     font-size: 1.15rem;
 }
 
@@ -32,7 +45,7 @@
     font-weight: 400;
     color: var(--green);
 }
-.title {
+.blog-title {
     width: 100%;
     color: var(--dark);
     font-size: 1.5rem;
