@@ -1,9 +1,9 @@
 import React from 'react';
-import Button from '../Button';
 import classNames from 'classnames/bind';
 import styles from './Pagination.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLeftLong, faRightLong } from '@fortawesome/free-solid-svg-icons';
+import Button from '../Button/button';
 
 const cx = classNames.bind(styles);
 

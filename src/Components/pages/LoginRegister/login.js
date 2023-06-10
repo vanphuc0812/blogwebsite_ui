@@ -12,7 +12,7 @@ import { faFacebook, faGithub, faGoogle } from '@fortawesome/free-brands-svg-ico
 import classNames from 'classnames/bind';
 
 import styles from './LoginRegister.module.scss';
-import Button from '../../Button';
+import Button from '../../Button/button';
 import images from '../../../asset/images';
 import * as apiService from '../../../services/apiService';
 import Input from '../../Input/input';

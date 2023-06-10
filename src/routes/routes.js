@@ -1,8 +1,8 @@
-import Home from '../Components/pages/Home';
+import Home from '../Components/pages/Home/home';
 import BlogView from '../Components/pages/BlogView';
 import Upload from '../Components/pages/Upload';
 import { HeaderOnly } from '../layouts';
-import Search from '../Components/pages/Search';
+import Search from '../layouts/components/Search/search';
 import config from '../config';
 import Login from '../Components/pages/LoginRegister/login';
 import Register from '../Components/pages/LoginRegister/register';

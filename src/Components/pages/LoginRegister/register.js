@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import styles from './LoginRegister.module.scss';
 import images from '../../../asset/images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from '../../Button';
+import Button from '../../Button/button';
 import {
     faEnvelope,
     faLock,

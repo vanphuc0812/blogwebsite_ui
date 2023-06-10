@@ -9,13 +9,13 @@ import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import images from '../../../asset/images';
 import { Wrapper as PopperWrapper } from '../../../Components/Popper';
-import Button from '../../../Components/Button';
-import InfoItem from '../../../Components/InfoItem';
+import Button from '../../../Components/Button/button';
+import InfoItem from '../../../Components/InfoItem/infoItem';
 import Menu from '../../../Components/Popper/Menu';
 
 import { LOGGED_MENU_ITEMS, UNLOGGED_MENU_ITEMS } from './Utils';
-import Image from '../../../Components/Image';
-import Search from '../Search';
+import Image from '../../../Components/Image/image';
+import Search from '../Search/search';
 import { Link } from 'react-router-dom';
 import config from '../../../config';
 import { action, useStore } from '../../../storage';
@@ -25,7 +25,6 @@ const cx = classNames.bind(styles);
 function Header() {
     const [store, dispatch] = useStore();
     var currentUser = typeof store !== 'undefined' ? store.loggedUser : false;
-
     // Handle logic
     const handleMenuChange = (menuItem) => {
         switch (menuItem.title) {

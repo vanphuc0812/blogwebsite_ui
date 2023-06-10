@@ -1,10 +1,10 @@
 import classNames from 'classnames/bind';
-import styles from './AuthorItem.module.scss';
+import styles from './Blogger.module.scss';
 import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
-function AuthorItem({ data }) {
+function Blogger({ data }) {
     return (
         <Link to={`/author/@${data.username}`} className={cx('wrapper')}>
             <div className={cx('name')}>
@@ -18,4 +18,4 @@ function AuthorItem({ data }) {
     );
 }
 
-export default AuthorItem;
+export default Blogger;

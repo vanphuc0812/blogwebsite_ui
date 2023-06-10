@@ -4,8 +4,7 @@ import Tippy from '@tippyjs/react/headless';
 import { useState } from 'react';
 import { Wrapper as PopperWrapper } from '../../Popper';
 import MenuItem from './MenuItem';
-import Header from './Header';
-
+import Header from '../../../layouts/components/Header/header';
 const cx = classNames.bind(styles);
 
 function Menu({ children, items = [], onchange = () => {}, hideOnClick = false, trigger = 'mouseenter focus' }) {

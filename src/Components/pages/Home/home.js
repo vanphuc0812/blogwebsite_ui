@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import * as apiService from '../../../services/apiService';
 import classNames from 'classnames/bind';
 import styles from './Home.module.scss';
-import Image from '../../Image';
+import Image from '../../Image/image';
 import { Link } from 'react-router-dom';
 import Pagination from '../../Pagination/pagination';
 import config from '../../../config';
@@ -39,7 +39,7 @@ function Home() {
                     <Image
                         to={'/blog/' + blogItem.user.username}
                         className={cx('avatar')}
-                        src={process.env.REACT_APP_BASE_URL + 'api/files/' + blogItem.user.avatar}
+                        src={process.env.REACT_APP_BASE_URL + config.path.FILE_STORAGE + blogItem.user.avatar}
                     ></Image>
                     <div className={cx('info')}>
                         <a href={'/blogItemger/' + blogItem.user.username} className={cx('author')}>
