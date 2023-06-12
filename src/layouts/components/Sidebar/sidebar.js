@@ -8,7 +8,18 @@ function Sidebar({ className }) {
 
     return (
         <aside className={classes}>
-            <h2 className={cx('title')}>BEST BLOGER</h2>
+            <div className={cx('section')}>
+                <div className={cx('section-title')}>
+                    <h3>TABLE OF CONTENT</h3>
+                    <hr />
+                </div>
+            </div>
+            <div className={cx('section')}>
+                <div className={cx('section-title')}>
+                    <h3>BEST BLOGER</h3>
+                    <hr />
+                </div>
+            </div>
         </aside>
     );
 }

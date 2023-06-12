@@ -1,7 +1,17 @@
 .wrapper {
-    display: flex;
-    // align-items: center;
-
-    width: 300px;
-    padding: 30px 0 0 10px;
+    padding-left: 10px;
+    // overflow-y: scroll;
+}
+.section {
+}
+.section-title {
+    width: 100%;
+    color: var(--green-semi-dark);
+    display: inline-flex;
+    & h3 {
+        white-space: nowrap;
+    }
+    & hr {
+        margin: 1.2rem 0 0 1.2rem;
+    }
 }

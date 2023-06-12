@@ -1,19 +1,26 @@
 .wrapper {
+    display: flex;
     padding-top: 30px;
+}
+
+.content {
+    width: 75%;
+}
+
+.sidebar {
+    width: 25%;
 }
 
 .title {
     font-size: 2rem;
-    width: 100%;
     background-color: var(--green-low);
     color: var(--green-dark);
     padding: 10px 10px;
 }
 
 .blog-item-wrapper {
-    display: inline-flex;
+    display: flex;
     align-items: top;
-    width: 100%;
     padding: 10px 0;
     border-bottom: 1px solid var(--green-low);
     border-left: 3px solid var(--green-low);
@@ -41,13 +48,20 @@
     // flex: 1;
 }
 .author {
-    // width: 120px;
     font-weight: 400;
     color: var(--green);
 }
 .blog-title {
-    width: 100%;
     color: var(--dark);
     font-size: 1.5rem;
     font-weight: 400;
+}
+
+@media screen and (max-width: 890px) {
+    .sidebar {
+        display: none;
+    }
+    .content {
+        width: 100%;
+    }
 }
