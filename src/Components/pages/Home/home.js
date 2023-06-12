@@ -46,11 +46,11 @@ function Home() {
                             src={process.env.REACT_APP_BASE_URL + config.path.FILE_STORAGE + blogItem.user.avatar}
                         />
                         <div className={cx('info')}>
-                            <a href={'/blogItemger/' + blogItem.user.username} className={cx('author')}>
+                            <a href={'/blogger/' + blogItem.user.username} className={cx('author')}>
                                 {blogItem.user.name}
                                 <span className={cx('post-date')}>đăng vào lúc {blogItem.createdAt}</span>
                             </a>
-                            <Link to={`/blogItem/${blogItem.transliterated}`}>
+                            <Link to={`/blog/${encodeURIComponent(blogItem.transliterated)}/${blogItem.id}`}>
                                 <h4 className={cx('blog-title')}>{blogItem.title}</h4>
                             </Link>
                             <p className={cx('short-content')}>{blogItem.shortContent.slice(0, 200) + '...'}</p>
@@ -65,11 +65,13 @@ function Home() {
                     />
                 )}
             </div>
-            <div className={cx('sidebar')}>
-                <StickyBox offsetTop={90}>
-                    <Sidebar />
-                </StickyBox>
-            </div>
+            {isFetched && (
+                <div className={cx('sidebar')}>
+                    <StickyBox offsetTop={90}>
+                        <Sidebar />
+                    </StickyBox>
+                </div>
+            )}
         </div>
     );
 }

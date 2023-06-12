@@ -37,7 +37,7 @@
     //default layout
     --default-layout-header-height: 60px;
     --default-layout-footer-height: 300px;
-    --default-layout-width: 1140px;
+    --default-layout-width: 1100px;
 }
 
 * {
@@ -92,12 +92,16 @@ body {
 /* width */
 ::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
     background: #f1f1f1;
     border-radius: 20px;
+}
+::-webkit-scrollbar-track:horizontal {
+    background: transparent;
 }
 
 /* Handle */

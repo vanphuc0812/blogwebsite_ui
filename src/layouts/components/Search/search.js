@@ -23,7 +23,7 @@ function Search() {
     const [showResult, setShowResult] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const debouncedValue = useDebounce(searchInputValue, 800);
+    const debouncedValue = useDebounce(encodeURIComponent(searchInputValue), 800);
 
     const inputRef = useRef();
 

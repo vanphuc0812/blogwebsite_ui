@@ -1,0 +1,60 @@
+.markdown {
+    margin: 20px 0;
+    font-size: 1.4rem;
+    width: 100%;
+    // line-height: 25px;
+    p,
+    span {
+        line-height: 30px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        background: transparent;
+        font-weight: 500;
+        padding: 8px 2px 8px 2px;
+    }
+    blockquote {
+        background: #e6f2e6;
+        border-left: 3px solid #408040;
+        font-style: italic;
+        padding-left: 5px;
+        margin-left: 2px;
+    }
+    pre {
+        background: #f3f4f2;
+        padding: 5px;
+        margin: 10px 0;
+    }
+    code {
+        padding-top: 8px;
+        display: block;
+        background: #f3f4f2;
+        font-family: JetBrains Mono NL, Courier New, Monospaced;
+        color: #24292e;
+        font-size: 0.8em;
+        overflow-x: scroll;
+    }
+    table {
+        border-spacing: 0px;
+        border-right: 1px solid gray;
+        border-bottom: 1px solid gray;
+    }
+    th,
+    td {
+        border-left: 1px solid gray;
+        border-top: 1px solid gray;
+    }
+    th {
+        background: #d4d4d4;
+        font-weight: 600;
+    }
+
+    img {
+        max-width: 100%;
+    }
+}

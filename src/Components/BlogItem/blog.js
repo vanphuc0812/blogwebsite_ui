@@ -6,7 +6,7 @@ const cx = classNames.bind(styles);
 
 function BlogItem({ data }) {
     return (
-        <Link to={`/blog/${data.transliterated}`} className={cx('wrapper')}>
+        <Link to={`/blog/${encodeURIComponent(data.transliterated)}/${data.id}`} className={cx('wrapper')}>
             <h4 className={cx('title')}>{data.title}</h4>
             <div className={cx('info')}>
                 <p className={cx('author')}>

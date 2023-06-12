@@ -8,6 +8,7 @@
 .container {
     margin-top: var(--default-layout-header-height);
     width: var(--default-layout-width);
+    min-height: calc(100vh - var(--default-layout-header-height) - var(--default-layout-footer-height));
     max-width: 100%;
     display: flex;
 }

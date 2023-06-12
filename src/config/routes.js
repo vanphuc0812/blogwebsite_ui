@@ -1,6 +1,6 @@
 const routes = {
     home: '/',
-    blog: '/blog/:transliterated',
+    blog: '/blog/:transliterated/:id',
     search: '/search',
     write: '/write',
     login: '/auth/login',

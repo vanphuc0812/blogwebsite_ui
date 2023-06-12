@@ -19,6 +19,7 @@
         "normalize.css": "^8.0.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-markdown": "^8.0.7",
         "react-router-dom": "^6.11.1",
         "react-scripts": "5.0.1",
         "react-sticky-box": "^2.0.4",
