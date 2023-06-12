@@ -12,6 +12,11 @@
     display: flex;
 }
 
+.sidebar {
+    width: 300px;
+    padding-left: 10px;
+}
+
 .banner {
     margin-top: var(--default-layout-header-height);
     width: 100%;

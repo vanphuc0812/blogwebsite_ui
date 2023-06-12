@@ -4,6 +4,7 @@ import styles from './DefaultLayout.module.scss';
 import className from 'classnames/bind';
 import Footer from '../components/Footer';
 import images from '../../asset/images';
+import StickyBox from 'react-sticky-box';
 
 const cx = className.bind(styles);
 
@@ -14,7 +15,11 @@ function DefaultLayout({ children }) {
             {/* <img className={cx('banner')} src={images.banner} /> */}
             <div className={cx('container')}>
                 <div className={cx('content')}>{children}</div>
-                <Sidebar className={cx('sidebar')} />
+                <div className={cx('sidebar')}>
+                    <StickyBox offsetTop={90}>
+                        <Sidebar />
+                    </StickyBox>
+                </div>
             </div>
             <Footer />
         </div>
