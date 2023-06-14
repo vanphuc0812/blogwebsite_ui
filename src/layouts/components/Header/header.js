@@ -24,7 +24,6 @@ const cx = classNames.bind(styles);
 
 function Header() {
     const [store, dispatch] = useStore();
-    console.log(store);
     var currentUser = Object.keys(store).length !== 0 ? store.loggedUser : false;
 
     // Handle logic

@@ -9,7 +9,8 @@
 }
 
 .active {
-    background-color: var(--green-dark);
-    color: rgb(219, 216, 216);
+    background-color: var(--green-dark) !important;
+    color: var(--green-low) !important;
+    border: none !important;
     pointer-events: none;
 }
