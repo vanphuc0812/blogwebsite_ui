@@ -24,7 +24,9 @@ const cx = classNames.bind(styles);
 
 function Header() {
     const [store, dispatch] = useStore();
-    var currentUser = typeof store !== 'undefined' ? store.loggedUser : false;
+    console.log(store);
+    var currentUser = Object.keys(store).length !== 0 ? store.loggedUser : false;
+
     // Handle logic
     const handleMenuChange = (menuItem) => {
         switch (menuItem.title) {
@@ -33,7 +35,6 @@ function Header() {
 
                 break;
             default:
-                //do nothing
                 break;
         }
     };

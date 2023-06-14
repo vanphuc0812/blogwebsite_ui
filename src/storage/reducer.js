@@ -10,8 +10,8 @@ function reducer(state, action) {
         case REMOVE_LOGGED_USER:
             Cookies.remove('loggedUser');
             Cookies.remove('token');
-            return;
-        // return {};
+            return {};
+
         default:
             throw new Error('Invalid action');
     }
