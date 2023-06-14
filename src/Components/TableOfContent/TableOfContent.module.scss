@@ -1,0 +1,23 @@
+.toc-wrapper {
+    nav,
+    ul,
+    li,
+    a {
+        margin-bottom: 5px;
+        color: var(--black);
+        font-size: 1.1rem;
+    }
+    a:hover {
+        color: var(--green-semi-dark);
+    }
+
+    .head3 {
+        margin-left: 10px;
+        // list-style-type: circle;
+    }
+
+    .head4 {
+        margin-left: 20px;
+        // list-style-type: square;
+    }
+}

@@ -3,17 +3,20 @@ import styles from './Sidebar.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Sidebar({ className }) {
+function Sidebar({ className, toc }) {
     const classes = cx('wrapper', { [className]: className });
 
     return (
         <aside className={classes}>
-            <div className={cx('section')}>
-                <div className={cx('section-title')}>
-                    <h3>TABLE OF CONTENT</h3>
-                    <hr />
+            {toc && (
+                <div className={cx('section')}>
+                    <div className={cx('section-title')}>
+                        <h3>TABLE OF CONTENT</h3>
+                        <hr />
+                    </div>
+                    {toc}
                 </div>
-            </div>
+            )}
             <div className={cx('section')}>
                 <div className={cx('section-title')}>
                     <h3>BEST BLOGER</h3>
