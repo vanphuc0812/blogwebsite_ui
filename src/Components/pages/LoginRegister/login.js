@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
@@ -18,7 +15,7 @@ import * as apiService from '../../../services/apiService';
 import Input from '../../Input/input';
 import config from '../../../config';
 import { useStore, action } from '../../../storage';
-
+import * as plogToast from '../../../utils/toast';
 const cx = classNames.bind(styles);
 
 const Login = () => {
@@ -36,11 +33,7 @@ const Login = () => {
                 dispatch(action.setLoggedUser(response.content));
                 navigate('/');
             } else {
-                toast.error('Login failed: ' + response.errors, {
-                    position: toast.POSITION.TOP_CENTER,
-                    hideProgressBar: true,
-                    autoClose: 3000,
-                });
+                plogToast.error('Login failed: ' + response.errors);
             }
         };
 
@@ -112,8 +105,6 @@ const Login = () => {
                     Github
                 </Button>
             </div>
-            <ToastContainer />
-            <ToastContainer />
         </div>
     );
 };

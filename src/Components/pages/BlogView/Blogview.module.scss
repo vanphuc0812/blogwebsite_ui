@@ -13,3 +13,59 @@
 .sidebar {
     width: 30%;
 }
+
+.author {
+    display: flex;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+.avatar {
+    height: 50px;
+    width: 50px;
+
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border: 1.5px solid transparent;
+    object-fit: cover;
+}
+.author {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 400;
+}
+
+.author-info {
+    display: flex;
+    margin-left: 10px;
+    .author-name {
+        margin-left: 16px;
+        margin-right: 10px;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    & .author-username {
+        margin-right: 10px;
+    }
+}
+.post-info {
+    & .post-date {
+        color: var(--gray);
+        margin-left: 3px;
+        // flex: 1;
+    }
+    & div {
+        display: flex;
+        justify-content: right;
+        margin-right: -8px;
+    }
+}
+
+.blog-title {
+    color: var(--dark);
+    font-size: 1.5rem;
+    font-weight: 400;
+}

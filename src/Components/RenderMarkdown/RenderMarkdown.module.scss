@@ -57,4 +57,12 @@
     img {
         max-width: 100%;
     }
+    ul,
+    ol {
+        padding: 0 2em;
+    }
+
+    ul {
+        list-style-type: disc;
+    }
 }

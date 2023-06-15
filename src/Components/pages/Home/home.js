@@ -48,12 +48,13 @@ function Home() {
                         <div className={cx('info')}>
                             <a href={'/blogger/' + blogItem.user.username} className={cx('author')}>
                                 {blogItem.user.name}
-                                <span className={cx('post-date')}>đăng vào lúc {blogItem.createdAt}</span>
                             </a>
+                            <span className={cx('post-date')}>đăng vào lúc {blogItem.createdAt}</span>
+
                             <Link to={`/blog/${encodeURIComponent(blogItem.transliterated)}/${blogItem.id}`}>
                                 <h4 className={cx('blog-title')}>{blogItem.title}</h4>
+                                <p className={cx('short-content')}>{blogItem.shortContent.slice(0, 200) + '...'}</p>
                             </Link>
-                            <p className={cx('short-content')}>{blogItem.shortContent.slice(0, 200) + '...'}</p>
                         </div>
                     </div>
                 ))}

@@ -46,13 +46,13 @@ function Header() {
                         <img className={cx('logo')} src={images.logo} alt="PLog" />
                     </Link>
                     <div className={cx('medium')}>
-                        <Button size="small" type="text">
+                        <Button size="medium" type="text">
                             Bài viết
                         </Button>
-                        <Button size="small" type="text">
+                        <Button size="medium" type="text">
                             Hỏi đáp
                         </Button>
-                        <Button size="small" type="text">
+                        <Button size="medium" type="text">
                             Thảo luận
                         </Button>
                     </div>
@@ -136,6 +136,7 @@ function Header() {
                                 <Button
                                     to={config.routes.login}
                                     className={cx('large')}
+                                    size="large"
                                     leftIcon={<FontAwesomeIcon icon={faRightToBracket} />}
                                 >
                                     Đăng nhập/Đăng ký

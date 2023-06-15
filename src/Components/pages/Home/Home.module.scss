@@ -47,6 +47,9 @@
     // flex: 1;
 }
 .author {
+    &:hover {
+        text-decoration: underline;
+    }
     font-weight: 400;
     color: var(--green);
 }
@@ -54,6 +57,10 @@
     color: var(--dark);
     font-size: 1.5rem;
     font-weight: 400;
+}
+
+.short-content {
+    color: black;
 }
 
 @media screen and (max-width: 890px) {

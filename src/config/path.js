@@ -11,3 +11,5 @@ export const GET_BLOG = 'BlogsManagement/GetBlogById';
 //User
 export const SEARCH_USER = 'UsersManagement/SearchUsers';
 export const GET_USER_BY_USERNAME = 'UsersManagement/GetUserByUsername';
+export const FOLLOW_USER = 'UsersManagement/FollowUser';
+export const UNFOLLOW_USER = 'UsersManagement/UnfollowUser';

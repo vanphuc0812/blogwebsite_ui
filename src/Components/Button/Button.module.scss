@@ -58,6 +58,12 @@
 
 //Button size
 .small {
+    min-width: 78px;
+    width: 78px;
+    height: 25px;
+    padding: 4px 8px; // height: 35px;
+}
+.medium {
     min-width: 88px;
     width: 88px;
     padding: 4px 8px; // height: 35px;
