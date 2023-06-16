@@ -102,14 +102,14 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             <Button
                 type="outline"
                 size="icon-btn"
-                onClick={() => onPageChange(currentPage === 1 ? 1 : currentPage - 1)}
+                onClick={() => handlePageChange(currentPage === 1 ? 1 : currentPage - 1)}
                 leftIcon={<FontAwesomeIcon icon={faLeftLong} />}
             ></Button>
             {renderPageButtons()}
             <Button
                 type="outline"
                 size="icon-btn"
-                onClick={() => onPageChange(currentPage === totalPages ? totalPages : currentPage + 1)}
+                onClick={() => handlePageChange(currentPage === totalPages ? totalPages : currentPage + 1)}
                 leftIcon={<FontAwesomeIcon icon={faRightLong} />}
             ></Button>
         </div>

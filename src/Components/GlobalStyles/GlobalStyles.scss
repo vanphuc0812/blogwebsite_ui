@@ -16,6 +16,7 @@
     --green-dark: #1f5a01;
     --green-semi-dark: #329102;
     --green-hover: rgba(96, 236, 103, 0.06);
+    --green-background: #fafcf5;
     --teal: #8eb4cb;
     --cyan: #17a2b8;
     --white: #fff;
@@ -113,4 +114,17 @@ body {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: var(--gray-dark);
+}
+.Toastify__toast-body {
+    color: #444c63;
+    font-size: 16px;
+    padding-left: 20px;
+    line-height: 20px;
+    padding: 0px;
+    padding-top: 25px;
+    width: 100%;
+    font-weight: 400;
+}
+.Toastify__toast > button > svg {
+    display: none;
 }

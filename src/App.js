@@ -3,7 +3,6 @@ import { publicRoutes } from './routes/routes';
 import DefaultLayout from './layouts';
 import { Fragment } from 'react';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
     return (

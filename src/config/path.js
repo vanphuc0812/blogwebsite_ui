@@ -7,6 +7,7 @@ export const FORGOT_PASSWORD = 'auth/forgotPassword';
 export const SEARCH_BLOG = 'BlogsManagement/SearchBlogs';
 export const GET_ALL_BLOG = 'BlogsManagement/GetAllBlogsPageable';
 export const GET_BLOG = 'BlogsManagement/GetBlogById';
+export const SAVE_BLOG = 'BlogsManagement/SaveBlog';
 
 //User
 export const SEARCH_USER = 'UsersManagement/SearchUsers';

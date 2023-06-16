@@ -14,6 +14,7 @@ function Button({
     size = 'medium',
     children,
     onClick,
+    fontSize,
     ...passProps
 }) {
     let Comp = 'button';
@@ -38,7 +39,7 @@ function Button({
         Comp = 'a';
     }
 
-    const classes = cx('wrapper', { [className]: className }, type, size);
+    const classes = cx('wrapper', { [className]: className }, type, size, fontSize);
 
     return (
         <Comp className={classes} {...props}>

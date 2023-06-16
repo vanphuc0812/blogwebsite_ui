@@ -113,13 +113,13 @@ function Header() {
                                 </span>
                             </Tippy>
                             <Tippy content="Writes" placement="bottom">
-                                <span>
+                                <Link to={config.routes.write}>
                                     <Button
                                         type="text"
                                         size="icon-btn"
                                         leftIcon={<FontAwesomeIcon icon={faPenToSquare} />}
                                     ></Button>
-                                </span>
+                                </Link>
                             </Tippy>
                             <Menu items={LOGGED_MENU_ITEMS} onchange={handleMenuChange}>
                                 <Image

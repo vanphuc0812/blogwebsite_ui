@@ -1,6 +1,7 @@
-import "./GlobalStyles.scss"
+import './GlobalStyles.scss';
+import 'react-toastify/dist/ReactToastify.css';
 
-function GlobalStyles ({children}) {
+function GlobalStyles({ children }) {
     return children;
 }
 

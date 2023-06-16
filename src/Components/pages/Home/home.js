@@ -23,7 +23,7 @@ function Home() {
                 params: {
                     page: currentPage - 1,
                     size: 10,
-                    sort: 'createdAt',
+                    sort: 'createdAt,desc',
                 },
             });
             setTotalPages(resBlog.totalPages);
