@@ -1,8 +1,8 @@
-.wrapper {
+.content {
     display: flex;
     width: 100%;
 }
-.content {
+.post-content {
     width: 70%;
 
     & .blog-title {
@@ -18,6 +18,8 @@
     display: flex;
     margin-bottom: 20px;
     font-size: 15px;
+    justify-content: space-between;
+    font-weight: 400;
 }
 .avatar {
     height: 50px;
@@ -29,11 +31,6 @@
     overflow: hidden;
     border: 1.5px solid transparent;
     object-fit: cover;
-}
-.author {
-    display: flex;
-    justify-content: space-between;
-    font-weight: 400;
 }
 
 .author-info {

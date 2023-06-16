@@ -80,6 +80,7 @@ function Footer() {
                         </div>
                         <div className={cx('contact-info')}>
                             <h2>THÔNG TIN LIÊN LẠC</h2>
+                            <h4>SDT: 0788996877</h4>
                         </div>
                     </div>
                 </div>
