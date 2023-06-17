@@ -14,3 +14,8 @@ export const SEARCH_USER = 'UsersManagement/SearchUsers';
 export const GET_USER_BY_USERNAME = 'UsersManagement/GetUserByUsername';
 export const FOLLOW_USER = 'UsersManagement/FollowUser';
 export const UNFOLLOW_USER = 'UsersManagement/UnfollowUser';
+
+//comment
+const comment = 'CommentManagement/';
+export const GET_NO_PARENT_COMMENTS = comment + 'GetNoParentCommentsByBlogID';
+export const GET_CHILDREN_COMMENTS = comment + 'GetChilrenCommentsByParentID';

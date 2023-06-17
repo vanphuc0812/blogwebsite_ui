@@ -20,26 +20,44 @@ function Comment({ author, blog }) {
     const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
     const [comments, setComments] = useState([]);
 
-    // useEffect(() => {
-    //     const fetchAPI = async () => {
-    //         const resComment = await apiService.fetch(config.path.GET_BLOG, {
-    //             params: {
-    //                 id,
-    //             },
-    //         });
-    //         const resUser = await apiService.fetch(config.path.GET_USER_BY_USERNAME, {
-    //             params: {
-    //                 username: resBlog.user.username,
-    //             },
-    //         });
+    useEffect(() => {
+        const fetchComments = async () => {
+            const noParentComments = await apiService.fetch(config.path.GET_NO_PARENT_COMMENTS, {
+                params: {
+                    blogId: blog.id,
+                },
+            });
 
-    //         document.title = resBlog.title;
-    //     };
-    //     fetchAPI();
-    // }, [id]);
+            const renderComments = async (data, level) => {
+                const listComment = [];
+                for (const comment of data) {
+                    listComment.push(
+                        <CommentItem key={comment.id} comment={comment} className={cx(`comment-level${level}`)} />,
+                    );
+
+                    const childrenComments = await apiService.fetch(config.path.GET_CHILDREN_COMMENTS, {
+                        params: {
+                            parentID: comment.id,
+                        },
+                    });
+
+                    if (childrenComments.length > 0) {
+                        const renderedChildrenComments = await renderComments(childrenComments, level + 1);
+                        listComment.push(...renderedChildrenComments);
+                    }
+                }
+                return listComment;
+            };
+
+            const renderedComments = await renderComments(noParentComments, 0);
+            setComments(renderedComments);
+        };
+
+        fetchComments();
+    }, []);
 
     const inputComment = (
-        <div className={cx('comment')}>
+        <div id="comment" className={cx('comment')}>
             <h1>Comment</h1>
             <Editor
                 editorState={editorState}
@@ -59,20 +77,7 @@ function Comment({ author, blog }) {
     return (
         <div>
             {inputComment}
-            <CommentItem
-                comment={{
-                    content: 'Test comment',
-                    likes: 0,
-                    user: {
-                        id: '7add5363-9f20-4d14-84f1-bc52f1878a0b',
-                        name: 'Nguyen Xuan Chien',
-                        username: 'Chibi',
-                        email: 'Chibi@gmail.com',
-                        avatar: '04c4c749-c7e4-48a4-8f77-1802c6e0bf28.png',
-                    },
-                    parent: null,
-                }}
-            ></CommentItem>
+            {comments}
         </div>
     );
 }

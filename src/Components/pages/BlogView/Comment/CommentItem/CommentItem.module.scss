@@ -1,17 +1,18 @@
 .wrapper {
-    width: 100%;
     font-size: 1.2rem;
-    border: 1px solid var(--gray-semi-white);
-    padding: 5px;
-    margin-bottom: 10px;
+    border-left: 6px solid var(--green);
+    padding-left: 10px;
+    padding-bottom: 10px;
+    border-image: linear-gradient(to right, var(--green), rgba(0, 0, 0, 0)) 1 100%;
+    margin-bottom: 3px;
 }
 
 .author-info {
     display: flex;
 
     & .avatar {
-        height: 50px;
-        width: 50px;
+        height: 40px;
+        width: 40px;
 
         border-radius: 100%;
         display: flex;
@@ -35,7 +36,7 @@
 }
 
 .option-bar {
-    margin-left: 10px;
+    // margin-left: 10px;
     color: var(--gray);
     & .reply-btn {
         color: var(--green-semi-dark);

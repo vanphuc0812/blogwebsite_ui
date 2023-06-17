@@ -92,7 +92,7 @@ function BlogView() {
 
     const handleCommentButton = () => {
         try {
-            var element = document.querySelector('.comment');
+            var element = document.querySelector('#comment');
             var headerOffset = 60;
 
             var elementPosition = element.getBoundingClientRect().top;
@@ -217,7 +217,6 @@ function BlogView() {
                     </div>
                 )}
             </div>
-
             {!isFetching && <Comment author={author} blog={blog} />}
         </div>
     );
