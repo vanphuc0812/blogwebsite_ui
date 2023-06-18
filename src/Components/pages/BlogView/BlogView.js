@@ -25,7 +25,6 @@ function BlogView() {
     const [blog, setBlog] = useState({});
     const [author, setAuthor] = useState({});
     const [store, dispatch] = useStore();
-
     var loggedUser = Object.keys(store).length !== 0 ? store.loggedUser : false;
 
     const [isFollowed, setIsFollowed] = useState(false);
@@ -217,7 +216,7 @@ function BlogView() {
                     </div>
                 )}
             </div>
-            {!isFetching && <Comment author={author} blog={blog} />}
+            {!isFetching && <Comment blog={blog} />}
         </div>
     );
 }

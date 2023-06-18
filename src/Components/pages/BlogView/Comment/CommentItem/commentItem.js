@@ -7,10 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
-function CommentItem({ comment, className }) {
-    const handleReply = (e) => {
-        console.log(e.target.id);
-    };
+function CommentItem({ comment, className, loggedUser, onReplyClick, onDeleteClick }) {
     const classes = cx('wrapper', { [className]: className });
 
     return (
@@ -31,9 +28,14 @@ function CommentItem({ comment, className }) {
                 <FontAwesomeIcon icon={faChevronUp}></FontAwesomeIcon>
                 <span>{comment.likes}</span>
                 <FontAwesomeIcon icon={faChevronDown}></FontAwesomeIcon>
-                <button id={comment.id} className={cx('reply-btn')} onClick={handleReply}>
+                <button id={comment.id} className={cx('reply-btn')} onClick={onReplyClick}>
                     Reply
                 </button>
+                {loggedUser && loggedUser === comment.user.username && (
+                    <button id={comment.id} className={cx('reply-btn')} onClick={onDeleteClick}>
+                        Delete
+                    </button>
+                )}
             </div>
         </div>
     );

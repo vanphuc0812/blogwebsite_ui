@@ -1,10 +1,9 @@
 .wrapper {
+    padding: 10px;
     font-size: 1.2rem;
-    border-left: 6px solid var(--green);
-    padding-left: 10px;
-    padding-bottom: 10px;
-    border-image: linear-gradient(to right, var(--green), rgba(0, 0, 0, 0)) 1 100%;
-    margin-bottom: 3px;
+    // border-radius: 30px;
+    border-bottom-left-radius: 30px;
+    background: linear-gradient(to right, #e5ffe2, rgba(0, 0, 0, 0));
 }
 
 .author-info {
@@ -41,7 +40,7 @@
     & .reply-btn {
         color: var(--green-semi-dark);
         border-left: 1px solid var(--gray);
-        padding: 0 10px;
+        padding-left: 10px;
         margin-left: 10px;
         cursor: pointer;
 

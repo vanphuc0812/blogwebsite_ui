@@ -4,6 +4,9 @@
     flex-direction: column;
     align-items: center;
     background-color: var(--green-background);
+    // border-image: linear-gradient(to right, #e9fde6, rgba(0, 0, 0, 0)) 1 100%;
+    // border-image-slice: 1;
+    // border-image-width: 100% 0 0 0;
 }
 
 .container {

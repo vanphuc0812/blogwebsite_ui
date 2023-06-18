@@ -1,24 +1,26 @@
 import { useState, useEffect } from 'react';
-import { Editor } from 'react-draft-wysiwyg';
-import { EditorState, convertToRaw } from 'draft-js';
-import { draftToMarkdown } from 'markdown-draft-js';
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import ReactDOM from 'react-dom';
+
 import classNames from 'classnames/bind';
 
 import config from '../../../../config';
 import * as apiService from '../../../../services/apiService';
 
 import styles from './Comment.module.scss';
+import { useStore } from '../../../../storage';
 
-import Button from '../../../Button/button';
-import Image from '../../../Image/image';
 import CommentItem from './CommentItem/commentItem';
+import CommentInput from './CommentInput/commentInput';
 
 const cx = classNames.bind(styles);
 
-function Comment({ author, blog }) {
-    const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
+function Comment({ blog }) {
+    const [store, dispatch] = useStore();
     const [comments, setComments] = useState([]);
+    const [reload, setReload] = useState();
+    const loggedUser = Object.keys(store).length !== 0 ? store.loggedUser : false;
+
+    let replyState = useState([]);
 
     useEffect(() => {
         const fetchComments = async () => {
@@ -32,7 +34,16 @@ function Comment({ author, blog }) {
                 const listComment = [];
                 for (const comment of data) {
                     listComment.push(
-                        <CommentItem key={comment.id} comment={comment} className={cx(`comment-level${level}`)} />,
+                        <div key={comment.id}>
+                            <CommentItem
+                                comment={comment}
+                                loggedUser={loggedUser.username}
+                                className={cx(`comment-level${level}`)}
+                                onReplyClick={handleSelectReply}
+                                onDeleteClick={handleDelete}
+                            />
+                            {!replyState.indexOf(comment.id) === -1 && <CommentInput></CommentInput>}
+                        </div>,
                     );
 
                     const childrenComments = await apiService.fetch(config.path.GET_CHILDREN_COMMENTS, {
@@ -54,29 +65,37 @@ function Comment({ author, blog }) {
         };
 
         fetchComments();
-    }, []);
+    }, [reload]);
 
-    const inputComment = (
-        <div id="comment" className={cx('comment')}>
-            <h1>Comment</h1>
-            <Editor
-                editorState={editorState}
-                onEditorStateChange={setEditorState}
-                wrapperClassName={cx('wrapper-class')}
-                editorClassName={cx('editor-class')}
-                toolbarClassName={cx('toolbar-class')}
-                toolbar={{
-                    options: ['inline', 'list', 'link', 'image', 'emoji'],
-                }}
-            />
-            <div className={cx('submit-btn')}>
-                <Button size="medium">Submit</Button>
-            </div>
-        </div>
-    );
+    const handleSelectReply = async (e) => {
+        if (replyState.indexOf(e.target.id) === -1) {
+            replyState.push(e.target.id);
+            const targetElement = document.getElementById(e.target.id);
+            const newElement = document.createElement('div');
+            targetElement.insertAdjacentElement('afterend', newElement);
+            ReactDOM.render(
+                <CommentInput loggedUser={loggedUser} setReload={setReload} parentID={e.target.id} blogID={blog.id} />,
+                newElement,
+            );
+        }
+    };
+
+    const handleDelete = (e) => {
+        const fetchAPI = async () => {
+            const respone = await apiService.deleteAPI(config.path.DELETE_COMMENT, {
+                params: {
+                    commentID: e.target.id,
+                },
+            });
+            setReload((current) => !current);
+        };
+        fetchAPI();
+    };
+
     return (
         <div>
-            {inputComment}
+            <h1 id="comment">Comment</h1>
+            <CommentInput setReload={setReload} blogID={blog.id} />
             {comments}
         </div>
     );

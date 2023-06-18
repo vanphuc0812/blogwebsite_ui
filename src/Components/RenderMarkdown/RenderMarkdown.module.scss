@@ -31,9 +31,11 @@
         margin: 10px 0;
     }
     code {
-        padding-top: 8px;
+        padding: 8px 8px 0 8px;
         display: block;
-        background: #f3f4f2;
+        border-image: linear-gradient(to right, #e5ffe2, rgba(0, 0, 0, 0)) 1 100%;
+        border-image-slice: 1;
+        border-image-width: 100% 0 50% 0;
         font-family: JetBrains Mono NL, Courier New, Monospaced;
         color: #24292e;
         font-size: 0.8em;

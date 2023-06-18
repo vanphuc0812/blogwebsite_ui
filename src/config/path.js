@@ -19,3 +19,5 @@ export const UNFOLLOW_USER = 'UsersManagement/UnfollowUser';
 const comment = 'CommentManagement/';
 export const GET_NO_PARENT_COMMENTS = comment + 'GetNoParentCommentsByBlogID';
 export const GET_CHILDREN_COMMENTS = comment + 'GetChilrenCommentsByParentID';
+export const SAVE_COMMENT = comment + 'SaveComment';
+export const DELETE_COMMENT = comment + 'DeleteComment';

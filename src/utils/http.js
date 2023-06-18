@@ -19,4 +19,9 @@ export const put = async (path, body, param) => {
     return response.data;
 };
 
+export const deleteHttp = async (path, param) => {
+    const response = await http.delete(path, param);
+    return response.data;
+};
+
 export default http;

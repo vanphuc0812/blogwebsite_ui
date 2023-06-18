@@ -1,30 +1,10 @@
-//comment
+.comment-level0 {
+    border-top: 1px solid var(--green-low);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
 
-.comment {
-    border: 1px solid var(--gray-semi-white);
-    border-radius: 4px;
-    padding: 10px;
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
-.wrapper-class {
-    padding: 1rem;
-    border: 1px solid var(--gray-white);
-    border-radius: 4px;
-}
-.editor-class {
-    background-color: white;
-    padding: 1rem;
-    border: 1px solid var(--gray-white);
-}
-.toolbar-class {
-    border: 1px solid var(--gray-white);
-}
-
-.submit-btn {
-    text-align: right;
-    margin-top: 10px;
-}
-
 .comment-level1 {
     margin-left: 50px;
 }
