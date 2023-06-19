@@ -63,6 +63,11 @@
     color: black;
 }
 
+.blog-item {
+    border-bottom: 1px solid var(--green-low);
+    border-left: 3px solid var(--green-low);
+}
+
 @media screen and (max-width: 890px) {
     .sidebar {
         display: none;

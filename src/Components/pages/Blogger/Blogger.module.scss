@@ -1,0 +1,57 @@
+.wrapper {
+    width: 100%;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+
+    .info {
+        display: flex;
+    }
+
+    .avatar {
+        height: 80px;
+        width: 80px;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        border: 1.5px solid transparent;
+        object-fit: cover;
+
+        margin-right: 10px;
+    }
+
+    .blogger-name {
+        font-size: 16px;
+    }
+    .blogger-username {
+        font-size: 12px;
+    }
+}
+
+.tabs_list {
+    min-width: 470px;
+
+    margin: 20px 0;
+    padding: 5px;
+    display: flex;
+    display: flex;
+    box-shadow: 0px 4px 10px rgb(0 0 0 / 12%);
+}
+
+.overview {
+    display: flex;
+    align-items: center;
+}
+.content {
+    width: 70%;
+}
+.sidebar {
+    width: 30%;
+}
+
+.active {
+    color: var(--green-dark) !important;
+    background-color: var(--green-low);
+}

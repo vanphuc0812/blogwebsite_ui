@@ -1,7 +1,10 @@
 .search,
 .search-result {
     width: 360px;
-    padding-left: 16px;
+}
+
+.blogpost-search-result {
+    padding: 0 10px;
 }
 
 .search {
@@ -70,8 +73,11 @@
 .search-label {
     color: rgb(255, 255, 255);
     background-color: var(--green);
-    margin: 0px 10px;
     padding: 3px;
+}
+.search-result {
+    width: 360px;
+    padding-left: 16px;
 }
 .question-search-result,
 .blogpost-search-result {

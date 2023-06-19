@@ -4,6 +4,8 @@ import images from '../../asset/images';
 import styles from './Image.module.scss';
 import { Link } from 'react-router-dom';
 
+const cx = classNames.bind(styles);
+
 const Image = forwardRef(({ src, alt, className, fallBack: customFallBack = images.noImage, to, ...prop }, ref) => {
     const [fallBack, setFallBack] = useState('');
 
@@ -14,7 +16,7 @@ const Image = forwardRef(({ src, alt, className, fallBack: customFallBack = imag
         return (
             <Link to={to} ref={ref}>
                 <img
-                    className={classNames(styles.wrapper, className)}
+                    className={cx('wrapper', className)}
                     src={fallBack || src}
                     alt={alt}
                     {...prop}

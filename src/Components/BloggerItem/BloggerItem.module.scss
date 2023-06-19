@@ -1,4 +1,9 @@
 .wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.info {
     display: block;
     align-items: center;
     margin: 0 10px;
@@ -8,10 +13,6 @@
         background-color: var(--green-hover);
     }
 }
-
-.title {
-}
-
 .name {
     display: inline-flex;
     align-items: center;
@@ -26,6 +27,18 @@
         color: var(--dark);
     }
 }
+.avatar {
+    height: 50px;
+    width: 50px;
+
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border: 1.5px solid transparent;
+    object-fit: cover;
+}
+
 .writes {
     color: var(--gray);
 }

@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import Pagination from '../../Pagination/pagination';
 import config from '../../../config';
 import Sidebar from '../../../layouts/components/Sidebar/sidebar';
+import BlogItem from '../../BlogItem/blogItem';
 const cx = classNames.bind(styles);
 
 function Home() {
@@ -39,24 +40,7 @@ function Home() {
             <div className={cx('content')}>
                 {isFetched && <h2 className={cx('title')}>THE NEWEST BLOGS</h2>}
                 {searchBlogResult.map((blogItem) => (
-                    <div key={blogItem.id} className={cx('blog-item-wrapper')}>
-                        <Image
-                            to={'/blog/' + blogItem.user.username}
-                            className={cx('avatar')}
-                            src={process.env.REACT_APP_BASE_URL + config.path.FILE_STORAGE + blogItem.user.avatar}
-                        />
-                        <div className={cx('info')}>
-                            <a href={'/blogger/' + blogItem.user.username} className={cx('author')}>
-                                {blogItem.user.name}
-                            </a>
-                            <span className={cx('post-date')}>đăng vào lúc {blogItem.createdAt}</span>
-
-                            <Link to={`/blog/${encodeURIComponent(blogItem.transliterated)}/${blogItem.id}`}>
-                                <h4 className={cx('blog-title')}>{blogItem.title}</h4>
-                                <p className={cx('short-content')}>{blogItem.shortContent.slice(0, 200) + '...'}</p>
-                            </Link>
-                        </div>
-                    </div>
+                    <BlogItem className={cx('blog-item')} data={blogItem} />
                 ))}
                 {isFetched && (
                     <Pagination

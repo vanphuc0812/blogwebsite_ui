@@ -1,34 +1,51 @@
 .wrapper {
-    display: block;
-    align-items: center;
-    margin: 0 10px;
+    display: flex;
     padding: 10px 0;
-    font-size: 1.1rem;
-    &:hover {
-        background-color: var(--green-hover);
-    }
+    font-size: 1.15rem;
 }
 
-.title {
-    width: 100%;
-    color: var(--dark);
-}
+.avatar {
+    height: 40px;
+    width: 40px;
 
-.info {
-    display: inline-flex;
+    border-radius: 100%;
+    display: flex;
     align-items: center;
-
-    .post-date {
-        color: var(--gray);
-        margin-left: 3px;
-        // flex: 1;
-    }
-    .author {
-        // width: 120px;
-        font-weight: 400;
-        color: var(--green);
-    }
+    overflow: hidden;
+    border: 1.5px solid transparent;
+    margin: 0 10px;
+    object-fit: cover;
 }
-.content {
+
+.post-date {
+    color: var(--gray);
+    margin-left: 3px;
+}
+.author {
+    &:hover {
+        text-decoration: underline;
+    }
+    font-weight: 400;
+    color: var(--green);
+}
+.blog-title {
     color: var(--dark);
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+.short-content {
+    color: #000;
+}
+
+.popup-item {
+    & .blog-title {
+        color: var(--dark);
+        font-size: 12.5px;
+        font-weight: 400;
+    }
+    &.post-date,
+    & .author,
+    & .short-content {
+        font-size: 11px;
+    }
 }

@@ -9,9 +9,9 @@ import { useDebounce } from '../../../hooks';
 import * as apiService from '../../../services/apiService';
 import styles from './Search.module.scss';
 import { Wrapper as PopperWrapper } from '../../../Components/Popper';
-import BlogItem from '../../../Components/BlogItem/blog';
+import BlogItem from '../../../Components/BlogItem/blogItem';
 import Button from '../../../Components/Button/button';
-import Blogger from '../../../Components/BloggerItem/blogger';
+import BloggerItem from '../../../Components/BloggerItem/bloggerItem';
 import config from '../../../config';
 
 const cx = classNames.bind(styles);
@@ -73,7 +73,7 @@ function Search() {
                                     <div className={cx('blogpost-search-result')}>
                                         <h3 className={cx('search-label')}>Bài viết</h3>
                                         {searchBlogResult.map((item) => (
-                                            <BlogItem key={item.id} data={item} />
+                                            <BlogItem key={item.id} data={item} avatar={false} type="popup-item" />
                                         ))}
                                     </div>
                                 )}
@@ -81,7 +81,7 @@ function Search() {
                                     <div className={cx('author-search-result')}>
                                         <h3 className={cx('search-label')}>Tác giả</h3>
                                         {searchAuthorResult.map((item) => (
-                                            <Blogger key={item.id} data={item} />
+                                            <BloggerItem key={item.id} data={item} />
                                         ))}
                                     </div>
                                 )}

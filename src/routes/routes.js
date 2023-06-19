@@ -6,6 +6,7 @@ import Search from '../layouts/components/Search/search';
 import config from '../config';
 import Login from '../Components/pages/LoginRegister/login';
 import Register from '../Components/pages/LoginRegister/register';
+import Blogger from '../Components/pages/Blogger/blogger';
 const publicRoutes = [
     { path: config.routes.home, component: Home },
     { path: config.routes.blog, component: BlogView },
@@ -13,6 +14,7 @@ const publicRoutes = [
     { path: config.routes.search, component: Search, layout: null },
     { path: config.routes.login, component: Login, layout: null },
     { path: config.routes.register, component: Register, layout: null },
+    { path: config.routes.blogger, component: Blogger },
 ];
 // require login
 const privateRoutes = [];
