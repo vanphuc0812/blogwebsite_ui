@@ -13,22 +13,23 @@ function Footer() {
             <div className={cx('wrapper')}>
                 <div className={cx('inner')}>
                     <div className={cx('about')}>
-                        <h2>VỀ CHÚNG TÔI</h2>
-                        <p>Plog là trang web cá nhân với mục đích ban đầu là học tập, lấy ý tưởng từ Viblo.asia</p>
+                        <h2>ABOUT US</h2>
+                        <p>Plog is a personal website which has studying as initial purpose, refering to Viblo.asia</p>
+                        <p> Plog is in developing.</p>
                     </div>
                     <div className={cx('resources')}>
-                        <h2>TÀI NGUYÊN</h2>
+                        <h2>Resources</h2>
                         <div className={cx('resource')}>
                             <div className={cx('left')}>
                                 <ul>
                                     <li>
-                                        <a className={cx('resource-btn')}>Tổ chức</a>
+                                        <a className={cx('resource-btn')}>Organizations</a>
                                     </li>
                                     <li>
-                                        <a className={cx('resource-btn')}>Bài viết</a>
+                                        <a className={cx('resource-btn')}>Posts</a>
                                     </li>
                                     <li>
-                                        <a className={cx('resource-btn')}>Câu hỏi</a>
+                                        <a className={cx('resource-btn')}>Questions</a>
                                     </li>
                                     <li>
                                         <a className={cx('resource-btn')}>Tags</a>
@@ -37,26 +38,26 @@ function Footer() {
                                         <a className={cx('resource-btn')}>Videos</a>
                                     </li>
                                     <li>
-                                        <a className={cx('resource-btn')}>Tác giả</a>
+                                        <a className={cx('resource-btn')}>Authors</a>
                                     </li>
                                 </ul>
                             </div>
                             <div className={cx('right')}>
                                 <ul>
                                     <li>
-                                        <a className={cx('resource-btn')}>Thảo luận</a>
+                                        <a className={cx('resource-btn')}>Discussions</a>
                                     </li>
                                     <li>
-                                        <a className={cx('resource-btn')}>Đề xuất hệ thống</a>
+                                        <a className={cx('resource-btn')}>Recommended systems</a>
                                     </li>
                                     <li>
-                                        <a className={cx('resource-btn')}>Công cụ</a>
+                                        <a className={cx('resource-btn')}>Tools</a>
                                     </li>
                                     <li>
                                         <a className={cx('resource-btn')}>Machine Learning</a>
                                     </li>
                                     <li>
-                                        <a className={cx('resource-btn')}>Trạng thái hệ thống</a>
+                                        <a className={cx('resource-btn')}>System status</a>
                                     </li>
                                 </ul>
                             </div>
@@ -64,9 +65,13 @@ function Footer() {
                     </div>
                     <div className={cx('contact')}>
                         <div className={cx('social')}>
-                            <h2>GIỮ KẾT NỐI</h2>
+                            <h2>KEEP IN TOUCH</h2>
                             <Tippy content="Facebook" placement="bottom">
-                                <FontAwesomeIcon className={cx('social-icon')} icon={faFacebook} />
+                                <FontAwesomeIcon
+                                    className={cx('social-icon')}
+                                    icon={faFacebook}
+                                    onClick={() => window.open('https://facebook.com/vanphuc2401', '_blank')}
+                                />
                             </Tippy>
                             <Tippy content="Twitter" placement="bottom">
                                 <FontAwesomeIcon className={cx('social-icon')} icon={faTwitter} />
@@ -79,8 +84,8 @@ function Footer() {
                             </Tippy>
                         </div>
                         <div className={cx('contact-info')}>
-                            <h2>THÔNG TIN LIÊN LẠC</h2>
-                            <h4>SDT: 0788996877</h4>
+                            <h2>CONTACT INFORMATION</h2>
+                            <h4>Phone: 0788996877</h4>
                         </div>
                     </div>
                 </div>
@@ -95,10 +100,10 @@ function Footer() {
                     <div>
                         <ul>
                             <li>
-                                <a href="/feedback">Phản hồi</a>
+                                <a href="/feedback">Feedback</a>
                             </li>
                             <li>
-                                <a href="/helps">Giúp đỡ</a>
+                                <a href="/helps">Help</a>
                             </li>
                             <li>
                                 <a href="/faq">FAQs</a>
@@ -107,7 +112,7 @@ function Footer() {
                                 <a href="/rss-channels">RSS</a>
                             </li>
                             <li>
-                                <a href="/terms/vi_term">Điều khoản</a>
+                                <a href="/terms/vi_term">Terms</a>
                             </li>
                         </ul>
                     </div>

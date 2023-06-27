@@ -10,16 +10,18 @@ import Pagination from '../../Pagination/pagination';
 import config from '../../../config';
 import Sidebar from '../../../layouts/components/Sidebar/sidebar';
 import BlogItem from '../../BlogItem/blogItem';
+import Loading from '../../Loading/loading';
 const cx = classNames.bind(styles);
 
 function Home() {
     const [searchBlogResult, setSearchBlogResult] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
-    const [isFetched, setIsFetch] = useState(false);
+    const [isFetched, setIsFetched] = useState(false);
 
     useEffect(() => {
         const fetchAPI = async () => {
+            setIsFetched(false);
             const resBlog = await apiService.fetch(config.path.GET_ALL_BLOG, {
                 params: {
                     page: currentPage - 1,
@@ -29,7 +31,7 @@ function Home() {
             });
             setTotalPages(resBlog.totalPages);
             setSearchBlogResult(resBlog.content);
-            setIsFetch(true);
+            setIsFetched(true);
         };
 
         fetchAPI();
@@ -37,19 +39,20 @@ function Home() {
 
     return (
         <div className={cx('wrapper')}>
-            <div className={cx('content')}>
-                {isFetched && <h2 className={cx('title')}>THE NEWEST BLOGS</h2>}
-                {searchBlogResult.map((blogItem) => (
-                    <BlogItem className={cx('blog-item')} data={blogItem} />
-                ))}
-                {isFetched && (
+            {isFetched && (
+                <div className={cx('content')}>
+                    <h2 className={cx('title')}>THE NEWEST BLOGS</h2>
+                    {searchBlogResult.map((blogItem) => (
+                        <BlogItem className={cx('blog-item')} data={blogItem} />
+                    ))}
                     <Pagination
                         currentPage={currentPage}
                         totalPages={totalPages}
                         onPageChange={(number) => setCurrentPage(number)}
                     />
-                )}
-            </div>
+                </div>
+            )}
+
             {isFetched && (
                 <div className={cx('sidebar')}>
                     <StickyBox offsetTop={90}>
@@ -57,6 +60,7 @@ function Home() {
                     </StickyBox>
                 </div>
             )}
+            {!isFetched && <Loading></Loading>}
         </div>
     );
 }

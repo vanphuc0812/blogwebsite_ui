@@ -36,8 +36,18 @@ const Login = () => {
                 plogToast.error('Login failed: ' + response.errors);
             }
         };
+        if (username === '' || password === '') {
+            plogToast.error('Please input full information');
+        } else fetchAPI();
+    };
 
-        fetchAPI();
+    const handleLoginAsGoogle = () => {
+        // console.log('aaa');
+        // const fetchAPI = async () => {
+        //     const response = await apiService.fetch('http://localhost:8080/oauth2/authorization/google');
+        //     console.log(response);
+        // };
+        // fetchAPI();
     };
 
     return (
@@ -94,6 +104,7 @@ const Login = () => {
                     type="outline"
                     size="medium"
                     leftIcon={<FontAwesomeIcon style={{ color: '#e70d0d' }} icon={faGoogle} />}
+                    onClick={handleLoginAsGoogle}
                 >
                     Google
                 </Button>

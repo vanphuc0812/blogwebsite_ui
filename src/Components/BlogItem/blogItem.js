@@ -3,6 +3,7 @@ import styles from './BlogItem.module.scss';
 import { Link } from 'react-router-dom';
 import config from '../../config';
 import Image from '../Image/image';
+import RenderMarkdown from '../RenderMarkdown/renderMarkdown';
 
 const cx = classNames.bind(styles);
 
@@ -26,7 +27,14 @@ function BlogItem({ data, avatar = true, type, className }) {
 
                 <Link to={`/blog/${encodeURIComponent(data.transliterated)}/${data.id}`}>
                     <h4 className={cx('blog-title')}>{data.title}</h4>
-                    <p className={cx('short-content')}>{data.shortContent.slice(0, 200) + '...'}</p>
+                    <p className={cx('short-content')}>
+                        {
+                            <RenderMarkdown
+                                markdownData={data.shortContent.slice(0, 200) + '...'}
+                                style="text"
+                            ></RenderMarkdown>
+                        }
+                    </p>
                 </Link>
             </div>
         </div>

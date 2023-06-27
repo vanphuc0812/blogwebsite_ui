@@ -102,17 +102,14 @@ function Blogger() {
                 return blogs.map((blog) => {
                     return <BlogItem data={blog}></BlogItem>;
                 });
-                break;
             case 'following':
                 return blogger.following.map((username) => {
                     return <BloggerItem username={username} avatar={true}></BloggerItem>;
                 });
-                break;
             case 'followed':
                 return blogger.followed.map((username) => {
                     return <BloggerItem username={username} avatar={true}></BloggerItem>;
                 });
-                break;
 
             default:
                 break;

@@ -12,11 +12,12 @@ import {
     faLockOpen,
     faVenusMars,
 } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { faFacebook, faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import * as apiService from '../../../services/apiService';
 import Input from '../../Input/input';
 import config from '../../../config';
+import * as plogToast from '../../../utils/toast';
 
 const cx = classNames.bind(styles);
 
@@ -27,15 +28,35 @@ function Register() {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [gender, setGender] = useState('MALE');
+    const navigate = useNavigate();
 
     const submitRegister = () => {
-        const response = apiService.postJson(config.path.REGISTER, {
-            name,
-            username,
-            password,
-            email,
-            gender,
-        });
+        const fetchAPI = async () => {
+            const response = await apiService.postJson(config.path.REGISTER, {
+                name,
+                username,
+                password,
+                email,
+                gender,
+            });
+            if (response.errors.length === 0) {
+                navigate('/');
+            } else {
+                plogToast.error('Register failed: ' + response.errors);
+            }
+        };
+        if (
+            name === '' ||
+            username === '' ||
+            password === '' ||
+            confirmPassword === '' ||
+            email === '' ||
+            gender === ''
+        ) {
+            plogToast.error('Please input full information');
+        } else if (confirmPassword !== password) {
+            plogToast.error('Password is not matched');
+        } else fetchAPI();
     };
 
     return (

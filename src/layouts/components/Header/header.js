@@ -47,13 +47,13 @@ function Header() {
                     </Link>
                     <div className={cx('medium')}>
                         <Button size="medium" type="text">
-                            Bài viết
+                            Posts
                         </Button>
                         <Button size="medium" type="text">
-                            Hỏi đáp
+                            Questions
                         </Button>
                         <Button size="medium" type="text">
-                            Thảo luận
+                            Discussions
                         </Button>
                     </div>
                 </div>
@@ -73,8 +73,8 @@ function Header() {
                             render={(attr) => (
                                 <PopperWrapper>
                                     <div className={cx('info-header')}>
-                                        <h3>Thông tin</h3>
-                                        <button className={cx('mark-seen-btn')}>Đánh dấu là đã đọc</button>
+                                        <h3>Information</h3>
+                                        <button className={cx('mark-seen-btn')}>Mark all as read</button>
                                     </div>
                                     <div className={cx('list-info')}>
                                         <InfoItem
@@ -87,7 +87,7 @@ function Header() {
                                         ></InfoItem>
                                     </div>
                                     <div className={cx('info-footer')}>
-                                        <button className={cx('all-info-btn')}>Tất cả thông tin</button>
+                                        <button className={cx('all-info-btn')}>All information</button>
                                     </div>
                                 </PopperWrapper>
                             )}
@@ -139,7 +139,7 @@ function Header() {
                                     size="large"
                                     leftIcon={<FontAwesomeIcon icon={faRightToBracket} />}
                                 >
-                                    Đăng nhập/Đăng ký
+                                    Login/Register
                                 </Button>
                                 <Button
                                     className={cx('un-large')}

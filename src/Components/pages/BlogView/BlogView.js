@@ -19,6 +19,7 @@ import { faBookmark, faComment, faEye, faStar, faUserPlus } from '@fortawesome/f
 import { useStore } from '../../../storage';
 import * as plogToast from '../../../utils/toast';
 import Comment from './Comment/comment';
+import Loading from '../../Loading/loading';
 const cx = classNames.bind(styles);
 function BlogView() {
     const { id } = useParams();
@@ -107,9 +108,9 @@ function BlogView() {
 
     return (
         <div className={cx('wrapper')}>
-            <div className={cx('content')}>
-                <div className={cx('post-content')}>
-                    {!isFetching && (
+            {!isFetching && (
+                <div className={cx('content')}>
+                    <div className={cx('post-content')}>
                         <div className={cx('author')}>
                             <div className={cx('author-info')}>
                                 <Image
@@ -203,20 +204,19 @@ function BlogView() {
                                 </div>
                             </div>
                         </div>
-                    )}
-                    <h1 className={cx('blog-title')}>{blog.title}</h1>
-                    <RenderMarkdown markdownData={blog.content}></RenderMarkdown>
-                </div>
+                        <h1 className={cx('blog-title')}>{blog.title}</h1>
+                        <RenderMarkdown markdownData={blog.content}></RenderMarkdown>
+                    </div>
 
-                {!isFetching && (
                     <div className={cx('sidebar')}>
                         <StickyBox offsetTop={90}>
                             <Sidebar toc={<TableOfContent />}></Sidebar>
                         </StickyBox>
                     </div>
-                )}
-            </div>
+                </div>
+            )}
             {!isFetching && <Comment blog={blog} />}
+            {isFetching && <Loading></Loading>}
         </div>
     );
 }

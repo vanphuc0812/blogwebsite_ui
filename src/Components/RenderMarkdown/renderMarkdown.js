@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import classNames from 'classnames/bind';
 
 import styles from './RenderMarkdown.module.scss';
+import { post } from '../../utils/http';
 
 const cx = classNames.bind(styles);
 
@@ -19,7 +20,7 @@ function HeadingRenderer(props) {
     return React.createElement('h' + props.level, { id: slug }, props.children);
 }
 
-function RenderMarkdown({ markdownData }) {
+function RenderMarkdown({ markdownData, style = 'post' }) {
     return (
         <ReactMarkdown
             components={{
@@ -29,7 +30,7 @@ function RenderMarkdown({ markdownData }) {
                 h4: HeadingRenderer,
                 h5: HeadingRenderer,
             }}
-            className={cx('markdown')}
+            className={cx(style)}
         >
             {markdownData}
         </ReactMarkdown>
