@@ -27,14 +27,7 @@ function BlogItem({ data, avatar = true, type, className }) {
 
                 <Link to={`/blog/${encodeURIComponent(data.transliterated)}/${data.id}`}>
                     <h4 className={cx('blog-title')}>{data.title}</h4>
-                    <p className={cx('short-content')}>
-                        {
-                            <RenderMarkdown
-                                markdownData={data.shortContent.slice(0, 200) + '...'}
-                                style="text"
-                            ></RenderMarkdown>
-                        }
-                    </p>
+                    <p className={cx('short-content')}>{data.shortContent.slice(0, 200) + '...'}</p>
                 </Link>
             </div>
         </div>
