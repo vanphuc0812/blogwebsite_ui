@@ -9,7 +9,6 @@ function DefaultLayout({ children }) {
     return (
         <div className={cx('wrapper')}>
             <Header />
-            {/* <img className={cx('banner')} src={images.banner} /> */}
             <div className={cx('container')}>{children}</div>
             <Footer />
         </div>

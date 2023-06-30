@@ -8,6 +8,7 @@ import Login from '../Components/pages/LoginRegister/login';
 import Register from '../Components/pages/LoginRegister/register';
 import Blogger from '../Components/pages/Blogger/blogger';
 import EditBlog from '../Components/pages/EditBlog/editBlog';
+import NotFound from '../Components/pages/NotFound/notFound';
 const publicRoutes = [
     { path: config.routes.home, component: Home },
     { path: config.routes.blog, component: BlogView },
@@ -17,6 +18,7 @@ const publicRoutes = [
     { path: config.routes.login, component: Login, layout: null },
     { path: config.routes.register, component: Register, layout: null },
     { path: config.routes.blogger, component: Blogger },
+    { path: '*', component: NotFound, layout: null },
 ];
 // require login
 const privateRoutes = [];

@@ -95,7 +95,7 @@ function Comment({ blog }) {
     return (
         <div>
             <h1 id="comment">Comment</h1>
-            <CommentInput setReload={setReload} blogID={blog.id} />
+            <CommentInput loggedUser={loggedUser} setReload={setReload} blogID={blog.id} />
             {comments}
         </div>
     );

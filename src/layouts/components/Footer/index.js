@@ -18,7 +18,7 @@ function Footer() {
                         <p> Plog is in developing.</p>
                     </div>
                     <div className={cx('resources')}>
-                        <h2>Resources</h2>
+                        <h2>RESOURCES</h2>
                         <div className={cx('resource')}>
                             <div className={cx('left')}>
                                 <ul>

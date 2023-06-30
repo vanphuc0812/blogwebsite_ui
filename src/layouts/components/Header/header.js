@@ -16,7 +16,7 @@ import Menu from '../../../Components/Popper/Menu';
 import { LOGGED_MENU_ITEMS, UNLOGGED_MENU_ITEMS } from './Utils';
 import Image from '../../../Components/Image/image';
 import Search from '../Search/search';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import config from '../../../config';
 import { action, useStore } from '../../../storage';
 
@@ -24,11 +24,15 @@ const cx = classNames.bind(styles);
 
 function Header() {
     const [store, dispatch] = useStore();
+    const navigate = useNavigate();
     var currentUser = Object.keys(store).length !== 0 ? store.loggedUser : false;
 
     // Handle logic
     const handleMenuChange = (menuItem) => {
         switch (menuItem.title) {
+            case 'Profile':
+                navigate(`/blogger/${currentUser.username}`);
+                break;
             case 'Sign out':
                 dispatch(action.removeLoggedUser());
 
@@ -46,7 +50,7 @@ function Header() {
                         <img className={cx('logo')} src={images.logo} alt="PLog" />
                     </Link>
                     <div className={cx('medium')}>
-                        <Button size="medium" type="text">
+                        <Button size="medium" type="text" to="/">
                             Posts
                         </Button>
                         <Button size="medium" type="text">

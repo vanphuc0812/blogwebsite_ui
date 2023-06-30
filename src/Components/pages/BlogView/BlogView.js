@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import classNames from 'classnames/bind';
 import StickyBox from 'react-sticky-box';
@@ -23,11 +23,11 @@ import Loading from '../../Loading/loading';
 const cx = classNames.bind(styles);
 function BlogView() {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [blog, setBlog] = useState({});
     const [author, setAuthor] = useState({});
     const [store, dispatch] = useStore();
     var loggedUser = Object.keys(store).length !== 0 ? store.loggedUser : false;
-
     const [isFollowed, setIsFollowed] = useState(false);
     const [isFetching, setIsFetching] = useState(true);
 
@@ -39,6 +39,7 @@ function BlogView() {
                     id,
                 },
             });
+            if (!resBlog || resBlog.error) navigate('/404');
             const resUser = await apiService.fetch(config.path.GET_USER_BY_USERNAME, {
                 params: {
                     username: resBlog.user.username,

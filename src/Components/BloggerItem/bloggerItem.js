@@ -42,7 +42,7 @@ function Blogger({ data, username, avatar = false }) {
                             src={process.env.REACT_APP_BASE_URL + config.path.FILE_STORAGE + blogger.avatar}
                         />
                     )}
-                    <Link to={`/author/@${blogger.username}`} className={cx('info')}>
+                    <Link to={`/blogger/${blogger.username}`} className={cx('info')}>
                         <div className={cx('name')}>
                             <h4 className={cx('authorName')}>
                                 {blogger.name}

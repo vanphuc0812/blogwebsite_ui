@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import StickyBox from 'react-sticky-box';
 
@@ -32,7 +32,7 @@ function Blogger() {
     const [isFollowed, setIsFollowed] = useState(false);
     const [isFetching, setIsFetching] = useState(true);
     const [content, setContent] = useState('posts');
-
+    const navigate = useNavigate();
     useEffect(() => {
         const fetchAPI = async () => {
             setIsFetching(true);
@@ -46,7 +46,7 @@ function Blogger() {
                     username: username,
                 },
             });
-
+            if (!resUser) navigate('/404');
             setIsFetching(false);
             setBlogger(resUser);
             setBlogs(resBlogs);
@@ -96,19 +96,18 @@ function Blogger() {
     };
 
     const renderContent = () => {
-        console.log(content);
         switch (content) {
             case 'posts':
                 return blogs.map((blog) => {
-                    return <BlogItem data={blog}></BlogItem>;
+                    return <BlogItem key={blog.id} data={blog}></BlogItem>;
                 });
             case 'following':
                 return blogger.following.map((username) => {
-                    return <BloggerItem username={username} avatar={true}></BloggerItem>;
+                    return <BloggerItem key={username} username={username} avatar={true}></BloggerItem>;
                 });
             case 'followed':
                 return blogger.followed.map((username) => {
-                    return <BloggerItem username={username} avatar={true}></BloggerItem>;
+                    return <BloggerItem key={username} username={username} avatar={true}></BloggerItem>;
                 });
 
             default:

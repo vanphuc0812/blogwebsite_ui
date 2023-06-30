@@ -32,8 +32,6 @@ function CommentInput({ parentID, blogID, setReload, loggedUser }) {
         const fetchAPI = async () => {
             console.log(data);
             const response = await apiService.postJson(config.path.SAVE_COMMENT, data);
-            console.log(response);
-            // if(response.e)
             setReload((current) => !current);
         };
         if (loggedUser) {

@@ -12,7 +12,7 @@ import Button from '../../Button/button';
 import * as toast from '../../../utils/toast';
 import * as apiService from '../../../services/apiService';
 import config from '../../../config';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 function EditBlog() {
@@ -22,6 +22,7 @@ function EditBlog() {
     const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
     const [convertedContent, setConvertedContent] = useState(null);
     const [isFetching, setIsFetching] = useState(true);
+    const navigate = useNavigate();
 
     const [store, dispatch] = useStore();
     var loggedUser = Object.keys(store).length !== 0 ? store.loggedUser : false;
@@ -34,7 +35,9 @@ function EditBlog() {
                     id,
                 },
             });
-            document.title = resBlog.title;
+
+            if (!resBlog || resBlog.error) navigate('/404');
+            document.title = 'Editing: ' + resBlog.title;
             setIsFetching(false);
             setEditorState(EditorState.createWithContent(ContentState.createFromText(resBlog.content)));
             setTitle(resBlog.title);
