@@ -40,6 +40,16 @@ export const fetchAll = async (path) => {
     }
 };
 
+export const update = async (path, data) => {
+    try {
+        const res = await http.put(path, data);
+        return res;
+    } catch (error) {
+        console.log(error);
+        return error.response.data;
+    }
+};
+
 export const postJson = async (path, data) => {
     try {
         const res = await http.post(path, data);

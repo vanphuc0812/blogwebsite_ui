@@ -20,7 +20,7 @@ function HeadingRenderer(props) {
     return React.createElement('h' + props.level, { id: slug }, props.children);
 }
 
-function RenderMarkdown({ markdownData, style = 'post' }) {
+function RenderMarkdown({ markdownData }) {
     return (
         <ReactMarkdown
             components={{
@@ -30,7 +30,7 @@ function RenderMarkdown({ markdownData, style = 'post' }) {
                 h4: HeadingRenderer,
                 h5: HeadingRenderer,
             }}
-            className={cx(style)}
+            className={cx('markdown')}
         >
             {markdownData}
         </ReactMarkdown>

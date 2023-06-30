@@ -10,6 +10,7 @@ export const GET_ALL_BLOG = blog + 'GetAllBlogsPageable';
 export const GET_BLOGS_BY_USERNAME = blog + 'GetBlogsByUsername';
 export const GET_BLOG = blog + 'GetBlogById';
 export const SAVE_BLOG = blog + 'SaveBlog';
+export const UPDATE_BLOG = blog + 'UpdateBlog';
 
 //User
 export const SEARCH_USER = 'UsersManagement/SearchUsers';

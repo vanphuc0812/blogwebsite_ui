@@ -43,7 +43,7 @@ function Home() {
                 <div className={cx('content')}>
                     <h2 className={cx('title')}>THE NEWEST BLOGS</h2>
                     {searchBlogResult.map((blogItem) => (
-                        <BlogItem className={cx('blog-item')} data={blogItem} />
+                        <BlogItem key={blogItem.id} className={cx('blog-item')} data={blogItem} />
                     ))}
                     <Pagination
                         currentPage={currentPage}

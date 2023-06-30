@@ -130,6 +130,15 @@ function BlogView() {
                                     >
                                         {isFollowed ? 'Followed' : 'Follow'}
                                     </Button>
+                                    {loggedUser && loggedUser.username === author.username && (
+                                        <Button
+                                            type="outline"
+                                            size="small"
+                                            to={`/blog/edit/${blog.transliterated}/${id}`}
+                                        >
+                                            Edit
+                                        </Button>
+                                    )}
 
                                     <div>
                                         <Tippy content="Reputation" placement="bottom">
