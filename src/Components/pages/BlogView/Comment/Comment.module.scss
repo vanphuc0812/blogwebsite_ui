@@ -1,18 +1,19 @@
 .comment-level0 {
     border-top: 1px solid var(--green-low);
     border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-
     margin-top: 20px;
 }
 .comment-level1 {
     margin-left: 50px;
+    border-top-left-radius: 6px;
 }
 
 .comment-level2 {
     margin-left: 100px;
+    border-top-left-radius: 6px;
 }
 
 .comment-level3 {
     margin-left: 150px;
+    border-top-left-radius: 6px;
 }

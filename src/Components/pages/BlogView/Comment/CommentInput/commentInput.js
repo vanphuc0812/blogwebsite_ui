@@ -30,9 +30,12 @@ function CommentInput({ parentID, blogID, setReload, loggedUser }) {
             blogID: blogID,
         };
         const fetchAPI = async () => {
-            console.log(data);
             const response = await apiService.postJson(config.path.SAVE_COMMENT, data);
-            setReload((current) => !current);
+
+            if (response && !response.error) {
+                setReload((current) => !current);
+                setEditorState(EditorState.createEmpty());
+            }
         };
         if (loggedUser) {
             data = { ...data, username: loggedUser.username };

@@ -2,11 +2,6 @@
 .search-result {
     width: 360px;
 }
-
-.blogpost-search-result {
-    padding: 0 10px;
-}
-
 .search {
     height: var(--search-height);
     background-color: var(--gray-white);
@@ -79,8 +74,9 @@
     width: 360px;
     padding-left: 16px;
 }
-.question-search-result,
-.blogpost-search-result {
+.blogpost-search-result,
+.author-search-result {
+    padding: 0 10px;
     min-height: 30px;
 }
 

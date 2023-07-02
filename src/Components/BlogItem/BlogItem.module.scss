@@ -2,6 +2,9 @@
     display: flex;
     padding: 10px 0;
     font-size: 1.15rem;
+    &:hover {
+        background-color: var(--green-hover);
+    }
 }
 
 .avatar {

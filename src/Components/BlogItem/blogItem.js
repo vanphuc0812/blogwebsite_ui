@@ -10,7 +10,6 @@ const cx = classNames.bind(styles);
 function BlogItem({ data, avatar = true, type, className }) {
     const classes = cx('wrapper', type, { [className]: className });
     return (
-        // <Link to={`/blog/${encodeURIComponent(data.transliterated)}/${data.id}`} className={cx('wrapper')}>
         <div key={data.id} className={classes}>
             {avatar && (
                 <Image
@@ -31,7 +30,6 @@ function BlogItem({ data, avatar = true, type, className }) {
                 </Link>
             </div>
         </div>
-        // </Link>
     );
 }
 

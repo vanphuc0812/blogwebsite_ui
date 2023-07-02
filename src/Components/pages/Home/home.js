@@ -4,8 +4,6 @@ import StickyBox from 'react-sticky-box';
 import * as apiService from '../../../services/apiService';
 import classNames from 'classnames/bind';
 import styles from './Home.module.scss';
-import Image from '../../Image/image';
-import { Link } from 'react-router-dom';
 import Pagination from '../../Pagination/pagination';
 import config from '../../../config';
 import Sidebar from '../../../layouts/components/Sidebar/sidebar';

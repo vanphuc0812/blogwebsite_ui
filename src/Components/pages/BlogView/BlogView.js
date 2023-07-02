@@ -135,7 +135,7 @@ function BlogView() {
                                         <Button
                                             type="outline"
                                             size="small"
-                                            to={`/blog/edit/${blog.transliterated}/${id}`}
+                                            to={`/blog/edit/${encodeURIComponent(blog.transliterated)}/${id}`}
                                         >
                                             Edit
                                         </Button>

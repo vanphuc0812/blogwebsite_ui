@@ -8,9 +8,10 @@ import Image from '../Image/image';
 const cx = classNames.bind(styles);
 
 function Blogger({ data, username, avatar = false }) {
-    const [isFetching, setIsFetching] = useState(true);
+    const [isFetching, setIsFetching] = useState(false);
     const [blogger, setBlogger] = useState({});
     useEffect(() => {
+        console.log(!!username);
         if (username) {
             const fetchAPI = async () => {
                 setIsFetching(true);
